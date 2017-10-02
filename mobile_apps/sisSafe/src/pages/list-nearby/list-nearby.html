@@ -5,24 +5,24 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  
-   <ion-navbar color="secondary">
-     <ion-title>List</ion-title>
-   </ion-navbar>
-  
- </ion-header>
-  
-  
- <ion-content>
-  
-     <ion-list no-lines>
-         <ion-item>
-             <ion-avatar item-left>
-                 <ion-icon name="pin"></ion-icon>
-             </ion-avatar>
-             <h2>Some Cool Place</h2>
-             <p>0.45 miles</p>
-         </ion-item>
-     </ion-list>
-  
- </ion-content>
+    
+     <ion-navbar color="secondary">
+       <ion-title>List of Places</ion-title>
+     </ion-navbar>
+    
+   </ion-header>
+    
+    
+   <ion-content>
+    
+       <ion-list no-lines>
+           <ion-item *ngFor="let location of locations.data">
+               <ion-avatar item-left>
+                   <ion-icon name="pin"></ion-icon>
+               </ion-avatar>
+               <h2>{{location.title}}</h2>
+               <p>{{location.distance}} miles</p>
+           </ion-item>
+       </ion-list>
+    
+   </ion-content>

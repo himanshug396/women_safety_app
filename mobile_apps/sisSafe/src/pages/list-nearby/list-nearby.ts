@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { LocationsProvider } from '../../providers/locations/locations';
+
 /**
  * Generated class for the ListNearbyPage page.
  *
@@ -14,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ListNearbyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public locations: LocationsProvider) {
   }
 
   ionViewDidLoad() {
