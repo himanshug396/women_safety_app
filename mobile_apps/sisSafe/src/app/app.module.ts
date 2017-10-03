@@ -9,7 +9,11 @@ import { HomePage } from '../pages/home/home';
 import { MapsNearbyPage } from '../pages/maps-nearby/maps-nearby';
 import { ListNearbyPage } from '../pages/list-nearby/list-nearby';
 import { HomeNearbyPage } from '../pages/home-nearby/home-nearby';
-
+import {AlertButtonPage} from '../pages/alert-button/alert-button';
+import {DangerButtonPage} from '../pages/danger-button/danger-button';
+import {KnowThisLocalityPage} from '../pages/know-this-locality/know-this-locality';
+import {NearestWhatPage} from '../pages/nearest-what/nearest-what';
+import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { LocationsProvider } from '../providers/locations/locations';
@@ -24,7 +28,12 @@ import { HttpModule } from '@angular/http';
     HomePage,
     HomeNearbyPage,
     MapsNearbyPage,
-    ListNearbyPage
+    ListNearbyPage,
+    AlertButtonPage,
+    DangerButtonPage,
+    KnowThisLocalityPage,
+    NearestWhatPage,
+    LocalityDetailPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,12 @@ import { HttpModule } from '@angular/http';
     HomePage,
     HomeNearbyPage,
     MapsNearbyPage,
-    ListNearbyPage
+    ListNearbyPage,
+    AlertButtonPage,
+    DangerButtonPage,
+    KnowThisLocalityPage,
+    NearestWhatPage,
+    LocalityDetailPage
   ],
   providers: [
     StatusBar,
