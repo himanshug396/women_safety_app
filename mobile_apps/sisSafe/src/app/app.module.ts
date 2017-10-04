@@ -19,6 +19,8 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { LocationsProvider } from '../providers/locations/locations';
 import { ClickAndUploadPage } from '../pages/click-and-upload/click-and-upload';
 
+import { TutorialPage } from '../pages/tutorial/tutorial';
+
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -40,7 +42,8 @@ import { Camera } from '@ionic-native/camera';
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    ClickAndUploadPage
+    ClickAndUploadPage,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { Camera } from '@ionic-native/camera';
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    ClickAndUploadPage
+    ClickAndUploadPage,
+    TutorialPage
   ],
   providers: [
     StatusBar,
