@@ -17,11 +17,17 @@ import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 import { LocationsProvider } from '../providers/locations/locations';
+import { ClickAndUploadPage } from '../pages/click-and-upload/click-and-upload';
 
 import { Network } from '@ionic-native/network';
-import { Geolocation,GeolocationOptions,Geoposition } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { HttpModule } from '@angular/http';
+
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -33,7 +39,8 @@ import { HttpModule } from '@angular/http';
     DangerButtonPage,
     KnowThisLocalityPage,
     NearestWhatPage,
-    LocalityDetailPage
+    LocalityDetailPage,
+    ClickAndUploadPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +58,8 @@ import { HttpModule } from '@angular/http';
     DangerButtonPage,
     KnowThisLocalityPage,
     NearestWhatPage,
-    LocalityDetailPage
+    LocalityDetailPage,
+    ClickAndUploadPage
   ],
   providers: [
     StatusBar,
@@ -61,7 +69,11 @@ import { HttpModule } from '@angular/http';
     GoogleMapsProvider,
     LocationsProvider,
     Network,
-    Geolocation
+    Geolocation,
+    File,
+    Transfer,
+    FilePath,
+    Camera
   ]
 })
 export class AppModule {}
