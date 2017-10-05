@@ -7,6 +7,9 @@ import {DangerButtonPage} from '../danger-button/danger-button';
 import {KnowThisLocalityPage} from '../know-this-locality/know-this-locality';
 
 import { ClickAndUploadPage } from '../click-and-upload/click-and-upload';
+import {LoginPage} from '../login/login';
+
+import { AddContactsPage} from '../add-contacts/add-contacts';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +18,7 @@ import { ClickAndUploadPage } from '../click-and-upload/click-and-upload';
 export class HomePage {
 
   lastImage: string = null;
-  constructor(public navCtrl: NavController,) {
+  constructor(public navCtrl: NavController) {
   }
   nearbyPlaces(){
     this.navCtrl.push(NearestWhatPage);
@@ -32,5 +35,11 @@ export class HomePage {
   }
   ClickAndUpload(){
     this.navCtrl.push(ClickAndUploadPage);
+  }
+  login(){
+    this.navCtrl.push(LoginPage);
+  }
+  add_contacts(){
+    this.navCtrl.push(AddContactsPage)
   }
 }

@@ -1,3 +1,55 @@
 page-verify-otp {
 
 }
+page-verify-otp {
+    
+    }
+    #nav-verify-otp{
+      background-color: white;
+    }
+    
+    #shesafe-logo{
+      width:40%;
+      margin: auto;
+      align-content: center;
+      padding-top:40px;
+      padding-bottom:40px;
+      display: block;
+    }
+    #edit_button{
+      color:#30a8f9;
+      padding: 20px;
+      padding-top: 10px;
+      width: 100px;
+      margin: auto;
+      text-align: center;
+      background: transparent;
+      border: 0;
+      box-shadow: 0;
+    }
+    .user_details_edit_container_line{
+     margin: 5px;
+     margin-top: 5px;
+     text-align: center;
+    }
+    
+    .phone-text{
+      width: 90%;
+    }
+    #button_verify_otp{
+      width: 90%;
+      margin: auto;
+      margin-top: 5%;
+      align-content: center;
+    }
+    #resend_otp{
+      text-align: center;
+      width: 100%;
+      margin:auto;
+      margin-top:2em;
+    }
+    #resend_otp button{
+      background-color:transparent;
+    }
+    
+    

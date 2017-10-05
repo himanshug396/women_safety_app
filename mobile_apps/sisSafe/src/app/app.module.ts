@@ -20,6 +20,9 @@ import { LocationsProvider } from '../providers/locations/locations';
 import { ClickAndUploadPage } from '../pages/click-and-upload/click-and-upload';
 
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { LoginPage} from '../pages/login/login';
+import { VerifyOtpPage} from '../pages/verify-otp/verify-otp';
+import {AddContactsPage} from '../pages/add-contacts/add-contacts';
 
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -43,7 +46,10 @@ import { Camera } from '@ionic-native/camera';
     NearestWhatPage,
     LocalityDetailPage,
     ClickAndUploadPage,
-    TutorialPage
+    TutorialPage,
+    LoginPage,
+    VerifyOtpPage,
+    AddContactsPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,10 @@ import { Camera } from '@ionic-native/camera';
     NearestWhatPage,
     LocalityDetailPage,
     ClickAndUploadPage,
-    TutorialPage
+    TutorialPage,
+    LoginPage,
+    VerifyOtpPage,
+    AddContactsPage
   ],
   providers: [
     StatusBar,

@@ -25,4 +25,10 @@ export class LoginPage {
   login(){
     this.navCtrl.push(VerifyOtpPage);
   }
+  otpPage(){
+    this.navCtrl.push(VerifyOtpPage,{
+      'name':this.name,
+      'phone':this.phone
+    })
+  }
 }
