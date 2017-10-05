@@ -7,12 +7,42 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>addContacts</ion-title>
+    <ion-title>My Contacts</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="skip()" color="primary">Skip</button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content style="background-color:white">
+  <ion-fab bottom right style="bottom:2em;right:2em;" (click)="addcontact()">
+    <button ion-fab>
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+      
+  <ion-list>
+    <ion-item-sliding style="border-bottom:0.5px solid #ddd">
+      <ion-item>
+        <h2>Himanshu<span style="float:right;">(+91-9569191889)</span></h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+        <button ion-button style="background-color:red">
+          <ion-icon name="call"></ion-icon>
+          Del
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>
