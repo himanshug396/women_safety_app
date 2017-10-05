@@ -8,7 +8,7 @@ import { HomePage} from '../home/home';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-}
+
 @IonicPage()
 @Component({
   selector: 'page-tutorial',
@@ -18,6 +18,7 @@ export class TutorialPage {
 
   
   constructor(public navCtrl: NavController, public menu: MenuController) {
+  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TutorialPage');
