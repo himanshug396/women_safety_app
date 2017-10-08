@@ -25,7 +25,8 @@ export class LocationsProvider {
 
     return new Promise(resolve => {
 
-      this.http.get('assets/data/locations.json').map(res => res.json()).subscribe(data => {
+      this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + this.lat + ',' + this.long + 'rankby=distance&types=' + 'police' + '&sensor=false&key=' + this.apiKey
+        ).map(res => res.json()).subscribe(data => {
 
         this.data = this.applyHaversine(data.locations);
 
