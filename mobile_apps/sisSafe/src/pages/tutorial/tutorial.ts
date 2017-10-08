@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,MenuController,Platform} from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 
 import { HomePage} from '../home/home';
 /**
@@ -17,7 +17,7 @@ import { HomePage} from '../home/home';
 export class TutorialPage {
 
   
-  constructor(public navCtrl: NavController, public menu: MenuController) {
+  constructor(public navCtrl: NavController) {
   
   }
   ionViewDidLoad() {

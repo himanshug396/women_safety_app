@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
-import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+// import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 /**
  * Generated class for the AddContactsPage page.
  *
@@ -16,7 +16,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
 })
 export class AddContactsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private contacts: Contacts) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

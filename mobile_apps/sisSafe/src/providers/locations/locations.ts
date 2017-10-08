@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Geolocation } from '@ionic-native/geolocation';
 import * as CONSTANTS from '../../assets/data/CONSTANTS';
 // import * as gapi from '../../assets/data/gapi';
 /*
@@ -17,10 +16,10 @@ export class LocationsProvider {
   lat:any;
   long:any;
   apiKey:any = CONSTANTS.APIKEY;
-  constructor(public http: Http,private geolocation:Geolocation) {
+  constructor(public http: Http) {
   }
 
-  load(lat,long) {
+  load(lat,long,what) {
     this.lat = lat;
     this.long = long;
      return new Promise(resolve => {
