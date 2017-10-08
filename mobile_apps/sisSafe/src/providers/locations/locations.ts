@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Geolocation } from '@ionic-native/geolocation';
+import * as CONSTANTS from '../../assets/data/CONSTANTS';
+// import * as gapi from '../../assets/data/gapi';
 /*
   Generated class for the LocationsProvider provider.
 
@@ -12,24 +14,21 @@ import 'rxjs/add/operator/map';
 export class LocationsProvider {
 
   data: any;
-
-  constructor(public http: Http) {
-
+  lat:any;
+  long:any;
+  apiKey:any = CONSTANTS.APIKEY;
+  constructor(public http: Http,private geolocation:Geolocation) {
   }
 
-  load() {
-
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-
-    return new Promise(resolve => {
-
-      this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + this.lat + ',' + this.long + 'rankby=distance&types=' + 'police' + '&sensor=false&key=' + this.apiKey
+  load(lat,long) {
+    this.lat = lat;
+    this.long = long;
+     return new Promise(resolve => {
+      console.log(lat,long)
+       this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + String(lat) + ',' + String(long) + '&rankby=distance&types=' + 'police' + '&sensor=false&key=' + String(this.apiKey)
         ).map(res => res.json()).subscribe(data => {
-
-        this.data = this.applyHaversine(data.locations);
-
+        console.log(data);
+        this.data = this.applyHaversine(data.results);
         this.data.sort((locationA, locationB) => {
           return locationA.distance - locationB.distance;
         });
@@ -44,22 +43,24 @@ export class LocationsProvider {
   applyHaversine(locations) {
 
     let usersLocation = {
-      lat: 40.713744,
-      lng: -74.009056
+      lat: this.lat,
+      lng: this.long
     };
 
     locations.map((location) => {
-
+      console.log(location.geometry.location.lat,location.geometry.location.lng)
       let placeLocation = {
-        lat: location.latitude,
-        lng: location.longitude
+        lat: location.geometry.location.lat,
+        lng: location.geometry.location.lng
       };
-
+      console.log(location)
       location.distance = this.getDistanceBetweenPoints(
         usersLocation,
         placeLocation,
-        'miles'
+        'km'
       ).toFixed(2);
+      console.log(location)
+      
     });
 
     return locations;

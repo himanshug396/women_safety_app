@@ -15,13 +15,13 @@
     
    <ion-content>
     
-       <ion-list no-lines>
+       <ion-list no-lines id="list_page">
            <ion-item *ngFor="let location of locations.data">
                <ion-avatar item-left>
                    <ion-icon name="pin"></ion-icon>
                </ion-avatar>
-               <h2>{{location.title}}</h2>
-               <p>{{location.distance}} miles</p>
+               <h2>{{location.name}}</h2>
+               <p>{{location.distance}} km</p>
            </ion-item>
        </ion-list>
     

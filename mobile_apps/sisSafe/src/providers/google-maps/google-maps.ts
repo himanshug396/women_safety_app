@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConnectivityProvider } from '../connectivity/connectivity'
 import { Geolocation } from '@ionic-native/geolocation';
-
+import * as CONSTANTS from '../../assets/data/CONSTANTS';
 /*
   Generated class for the GoogleMapsProvider provider.
 
@@ -23,7 +23,7 @@ export class GoogleMapsProvider {
   markers: any = [];
   // add your apiKey for GoogleMaps
   // example: apiKey: string = 'ARfdaDE..';
-  apiKey: string = 'AIzaSyDBNVArJsxc5TnB8u_9FOeOP1SkZ3bxWoQ';
+  apiKey: string = CONSTANTS.APIKEY;
 
   constructor(public connectivityService: ConnectivityProvider,
     public geolocation: Geolocation) {
@@ -99,9 +99,9 @@ export class GoogleMapsProvider {
       this.geolocation.getCurrentPosition().then((position) => {
 
         // UNCOMMENT FOR NORMAL USE
-       // let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        let latLng = new google.maps.LatLng(40.713744, -74.009056);
+        // let latLng = new google.maps.LatLng(40.713744, -74.009056);
 
         let mapOptions = {
           center: latLng,
