@@ -3,13 +3,18 @@ import { LocationsProvider } from '../../providers/locations/locations';
 import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
- 
 
+/**
+ * Generated class for the MapsNearbyTaxiPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */ 
 @Component({
-  selector: 'page-maps-nearby',
-  templateUrl: 'maps-nearby.html',
+  selector: 'page-maps-nearby-taxi',
+  templateUrl: 'maps-nearby-taxi.html',
 })
-export class MapsNearbyPage {
+export class MapsNearbyTaxiPage {
 
   lat:any;
   long:any;
@@ -23,7 +28,7 @@ export class MapsNearbyPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MapsPageNearby')
+    console.log('ionViewDidLoad MapsNearbyTaxiPage')
     this.platform.ready().then(() => {
       this.geolocation.getCurrentPosition().then((resp) => {
         this.lat=  resp.coords.latitude;
@@ -31,7 +36,7 @@ export class MapsNearbyPage {
         console.log(this.lat,this.long)
           
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.lat,this.long,'police');
+        let locationsLoaded = this.locations.load(this.lat,this.long,'taxi_stand');
 
         Promise.all([
           mapLoaded,
@@ -53,5 +58,4 @@ export class MapsNearbyPage {
       });
    
   }
-
 }

@@ -17,9 +17,7 @@ import { ListNearbyPage } from '../list-nearby/list-nearby';
 export class HomeNearbyPage {
   tab1Root: any = MapsNearbyPage;
   tab2Root: any = ListNearbyPage;
-  what:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.what = this.navParams.get('type');
   }
 
   ionViewDidLoad() {

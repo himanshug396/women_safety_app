@@ -8,7 +8,16 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapsNearbyPage } from '../pages/maps-nearby/maps-nearby';
 import { ListNearbyPage } from '../pages/list-nearby/list-nearby';
+import { HomeNearbyBankPage } from '../pages/home-nearby-bank/home-nearby-bank';
 import { HomeNearbyPage } from '../pages/home-nearby/home-nearby';
+import { HomeNearbyMedicalPage } from '../pages/home-nearby-medical/home-nearby-medical';
+import { HomeNearbyStationPage } from '../pages/home-nearby-station/home-nearby-station';
+import { HomeNearbyTaxiPage} from '../pages/home-nearby-taxi/home-nearby-taxi';
+
+
+
+
+
 import {AlertButtonPage} from '../pages/alert-button/alert-button';
 import {DangerButtonPage} from '../pages/danger-button/danger-button';
 import {KnowThisLocalityPage} from '../pages/know-this-locality/know-this-locality';
@@ -50,7 +59,11 @@ import { Contacts} from '@ionic-native/contacts';
     TutorialPage,
     LoginPage,
     VerifyOtpPage,
-    AddContactsPage
+    AddContactsPage,
+    HomeNearbyBankPage,
+    HomeNearbyMedicalPage,
+    HomeNearbyStationPage,
+    HomeNearbyTaxiPage
   ],
   imports: [
     BrowserModule,
@@ -73,7 +86,11 @@ import { Contacts} from '@ionic-native/contacts';
     TutorialPage,
     LoginPage,
     VerifyOtpPage,
-    AddContactsPage
+    AddContactsPage,
+    HomeNearbyBankPage,
+    HomeNearbyMedicalPage,
+    HomeNearbyStationPage,
+    HomeNearbyTaxiPage
   ],
   providers: [
     StatusBar,

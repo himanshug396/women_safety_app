@@ -95,6 +95,8 @@ export class ClickAndUploadPage {
     var d = new Date(),
       n = d.getTime(),
       newFileName = n + ".jpg";
+      this.presentToast2(newFileName);
+      
     return newFileName;
   }
 
@@ -103,8 +105,11 @@ export class ClickAndUploadPage {
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
       console.log(this.lastImage)
+      this.presentToast2(this.lastImage);
     }, error => {
       this.presentToast('Error while storing file.');
+      this.presentToast2(this.lastImage);
+
     });
   }
 
@@ -117,6 +122,14 @@ export class ClickAndUploadPage {
     toast.present();
   }
 
+  private presentToast2(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 6000,
+      position: 'bottom'
+    });
+    toast.present();
+  }
   // Always get the accurate path to your apps folder
   public pathForImage(img) {
     if (img === null) {

@@ -19,12 +19,12 @@ export class LocationsProvider {
   constructor(public http: Http) {
   }
 
-  load(lat,long,what) {
+  load(lat,long,type) {
     this.lat = lat;
     this.long = long;
      return new Promise(resolve => {
       console.log(lat,long)
-       this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + String(lat) + ',' + String(long) + '&rankby=distance&types=' + 'police' + '&sensor=false&key=' + String(this.apiKey)
+       this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + String(lat) + ',' + String(long) + '&rankby=distance&types=' + type + '&sensor=false&key=' + String(this.apiKey)
         ).map(res => res.json()).subscribe(data => {
         console.log(data);
         this.data = this.applyHaversine(data.results);
