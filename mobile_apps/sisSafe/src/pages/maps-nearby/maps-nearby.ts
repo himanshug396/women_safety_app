@@ -39,7 +39,7 @@ export class MapsNearbyPage {
         ]).then((result) => {
 
           let locations = result[1];
-          console.log(locations)
+          // console.log(locations)
           for (let location of locations) {
             this.maps.addMarker(location.geometry.location.lat,location.geometry.location.lng);
           }

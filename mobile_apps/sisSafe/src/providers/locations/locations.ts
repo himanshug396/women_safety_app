@@ -23,7 +23,7 @@ export class LocationsProvider {
     this.lat = lat;
     this.long = long;
      return new Promise(resolve => {
-      console.log(lat,long)
+      // console.log(lat,long)
        this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + String(lat) + ',' + String(long) + '&rankby=distance&types=' + type + '&sensor=false&key=' + String(this.apiKey)
         ).map(res => res.json()).subscribe(data => {
         // console.log(data);
@@ -52,7 +52,7 @@ export class LocationsProvider {
         lat: location.geometry.location.lat,
         lng: location.geometry.location.lng
       };
-      console.log(location)
+      // console.log(location)
       location.distance = this.getDistanceBetweenPoints(
         usersLocation,
         placeLocation,
