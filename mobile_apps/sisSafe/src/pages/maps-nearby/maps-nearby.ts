@@ -4,12 +4,11 @@ import { GoogleMapsProvider } from '../../providers/google-maps/google-maps';
 import { NavController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
  
-
 @Component({
   selector: 'page-maps-nearby',
   templateUrl: 'maps-nearby.html',
 })
-export class MapsNearbyPage {
+export class MapsNearbyPage{
 
   lat:any;
   long:any;
@@ -32,7 +31,7 @@ export class MapsNearbyPage {
           
         let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
         let locationsLoaded = this.locations.load(this.lat,this.long,'police');
-
+        
         Promise.all([
           mapLoaded,
           locationsLoaded

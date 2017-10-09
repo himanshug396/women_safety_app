@@ -27,14 +27,12 @@ export class GoogleMapsProvider {
 
   constructor(public connectivityService: ConnectivityProvider,
     public geolocation: Geolocation) {
-
-  }
+   }
 
   init(mapElement: any, pleaseConnect: any): Promise<any> {
-
+    
     this.mapElement = mapElement;
     this.pleaseConnect = pleaseConnect;
-
     return this.loadGoogleMaps();
 
   }
@@ -73,7 +71,6 @@ export class GoogleMapsProvider {
         }
       }
       else {
-
         if (this.connectivityService.isOnline()) {
           this.initMap();
           this.enableMap();
@@ -110,6 +107,7 @@ export class GoogleMapsProvider {
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
+        
         resolve(true);
 
       });

@@ -35,7 +35,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { LoginPage} from '../pages/login/login';
 import { VerifyOtpPage} from '../pages/verify-otp/verify-otp';
 import {AddContactsPage} from '../pages/add-contacts/add-contacts';
-
+import {AddContacts2Page} from '../pages/add-contacts2/add-contacts2';
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -70,7 +70,8 @@ import { Contacts} from '@ionic-native/contacts';
     MapsNearbyBankPage,
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
-    MapsNearbyTaxiPage
+    MapsNearbyTaxiPage,
+    AddContacts2Page
   ],
   imports: [
     BrowserModule,
@@ -101,7 +102,8 @@ import { Contacts} from '@ionic-native/contacts';
     MapsNearbyBankPage,
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
-    MapsNearbyTaxiPage
+    MapsNearbyTaxiPage,
+    AddContacts2Page
   ],
   providers: [
     StatusBar,

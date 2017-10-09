@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HomePage} from '../home/home';
 // import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+
+import {AddContacts2Page} from '../add-contacts2/add-contacts2';
 /**
  * Generated class for the AddContactsPage page.
  *
@@ -15,16 +17,28 @@ import {HomePage} from '../home/home';
   templateUrl: 'add-contacts.html',
 })
 export class AddContactsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  selectedContacts = [];
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    // private contacts: Contacts
+  ) {
   }
 
+  // selectContact(){
+  //   navigator.contacts.pickContact(function(contact){
+  //       console.log('The following contact has been selected:' + JSON.stringify(contact));
+  //   },function(err){
+  //       console.log('Error: ' + err);
+  //   });
+  // }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContactsPage');
   }
   skip(){
     this.navCtrl.setRoot(HomePage);
   }
+
   addcontact(){
+    this.navCtrl.push(AddContacts2Page)
   }
 }

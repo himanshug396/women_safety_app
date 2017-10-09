@@ -26,6 +26,7 @@ export class NearestWhatPage {
   }
 
   ionViewDidLoad() {
+     
     console.log('ionViewDidLoad NearestWhatPage');
   }
   nearbyPolice(){
