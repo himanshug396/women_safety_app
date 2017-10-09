@@ -26,7 +26,7 @@ export class LocationsProvider {
       console.log(lat,long)
        this.http.get('https://maps.googleapis.com/maps/api/place/search/json?location=' + String(lat) + ',' + String(long) + '&rankby=distance&types=' + type + '&sensor=false&key=' + String(this.apiKey)
         ).map(res => res.json()).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         this.data = this.applyHaversine(data.results);
         this.data.sort((locationA, locationB) => {
           return locationA.distance - locationB.distance;
@@ -47,7 +47,7 @@ export class LocationsProvider {
     };
 
     locations.map((location) => {
-      console.log(location.geometry.location.lat,location.geometry.location.lng)
+      // console.log(location.geometry.location.lat,location.geometry.location.lng)
       let placeLocation = {
         lat: location.geometry.location.lat,
         lng: location.geometry.location.lng
@@ -58,7 +58,7 @@ export class LocationsProvider {
         placeLocation,
         'km'
       ).toFixed(2);
-      console.log(location)
+      // console.log(location)
       
     });
 

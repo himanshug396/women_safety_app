@@ -34,12 +34,12 @@ export class MapsNearbyMedicalPage {
         this.long = resp.coords.longitude;
         console.log(this.lat,this.long)
           
-        let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.lat,this.long,'hospital');
+        let mapLoaded_medical= this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
+        let locationsLoaded_medical = this.locations.load(this.lat,this.long,'hospital');
 
         Promise.all([
-          mapLoaded,
-          locationsLoaded
+          mapLoaded_medical,
+          locationsLoaded_medical
         ]).then((result) => {
 
           let locations = result[1];

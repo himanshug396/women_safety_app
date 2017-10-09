@@ -29,6 +29,7 @@ export class MapsNearbyBankPage {
   }
 
   ionViewDidLoad() {
+    location.reload();
     console.log('ionViewDidLoad MapsNearbyBankPage')
     this.platform.ready().then(() => {
       this.geolocation.getCurrentPosition().then((resp) => {
@@ -36,16 +37,16 @@ export class MapsNearbyBankPage {
         this.long = resp.coords.longitude;
         console.log(this.lat,this.long)
           
-        let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.lat,this.long,'bank');
+        let mapLoaded_bank = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
+        let locationsLoaded_bank = this.locations.load(this.lat,this.long,'bank');
 
         Promise.all([
-          mapLoaded,
-          locationsLoaded
+          mapLoaded_bank,
+          locationsLoaded_bank
         ]).then((result) => {
 
           let locations = result[1];
-          console.log(locations)
+          // console.log(locations)
           for (let location of locations) {
             this.maps.addMarker(location.geometry.location.lat,location.geometry.location.lng);
           }

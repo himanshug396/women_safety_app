@@ -34,12 +34,12 @@ export class MapsNearbyStationPage {
         this.long = resp.coords.longitude;
         console.log(this.lat,this.long)
           
-        let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.lat,this.long,'transit_station');
+        let mapLoaded_station = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
+        let locationsLoaded_station = this.locations.load(this.lat,this.long,'transit_station');
 
         Promise.all([
-          mapLoaded,
-          locationsLoaded
+          mapLoaded_station,
+          locationsLoaded_station
         ]).then((result) => {
 
           let locations = result[1];

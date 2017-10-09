@@ -35,12 +35,12 @@ export class MapsNearbyTaxiPage {
         this.long = resp.coords.longitude;
         console.log(this.lat,this.long)
           
-        let mapLoaded = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
-        let locationsLoaded = this.locations.load(this.lat,this.long,'taxi_stand');
+        let mapLoaded_taxi = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
+        let locationsLoaded_taxi = this.locations.load(this.lat,this.long,'taxi_stand');
 
         Promise.all([
-          mapLoaded,
-          locationsLoaded
+          mapLoaded_taxi,
+          locationsLoaded_taxi
         ]).then((result) => {
 
           let locations = result[1];

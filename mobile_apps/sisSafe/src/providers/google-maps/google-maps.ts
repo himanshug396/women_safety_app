@@ -105,7 +105,7 @@ export class GoogleMapsProvider {
 
         let mapOptions = {
           center: latLng,
-          zoom: 15,
+          zoom: 10,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
