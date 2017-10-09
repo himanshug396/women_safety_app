@@ -29,14 +29,12 @@ export class MapsNearbyBankPage {
   }
 
   ionViewDidLoad() {
-    location.reload();
     console.log('ionViewDidLoad MapsNearbyBankPage')
     this.platform.ready().then(() => {
       this.geolocation.getCurrentPosition().then((resp) => {
         this.lat=  resp.coords.latitude;
         this.long = resp.coords.longitude;
         console.log(this.lat,this.long)
-          
         let mapLoaded_bank = this.maps.init(this.mapElement.nativeElement, this.pleaseConnect.nativeElement);
         let locationsLoaded_bank = this.locations.load(this.lat,this.long,'bank');
 
