@@ -1,3 +1,92 @@
 from django.db import models
+from django.conf import settings
+from django.utils import timezone
 
-# Create your models here.
+from django.contrib.auth.models import AbstractBaseUser,\
+    BaseUserManager, PermissionsMixin
+from .utils import phone_regex                        
+import nucleus.constants as constants                  
+
+class UserManager(BaseUserManager):
+    def create_user(self, name, phone, **extra_fields):
+        time_now = timezone.now()
+        is_superuser = False
+        if not name:
+            raise ValueError('Name is not provided')
+        if not phone:
+            raise ValueError('Phone is not provided')
+        is_active = extra_fields.pop("is_active", True)
+        user = self.model(name=name, phone=phone, is_active=is_active,
+            is_superuser=is_superuser, last_login=time_now,
+            date_joined=time_now,**extra_fields)
+        user.set_password(settings.MASTER_PASSWORD)
+        user.save(using=self._db)
+        return user
+    
+    def create_superuser(self, phone, password, **extra_fields):
+        time_now = timezone.now()
+        is_superuser = True
+        if not phone:
+            raise ValueError('Phone is not provided')
+        is_active = extra_fields.pop("is_active", True)
+        user = self.model(phone=phone, is_active=is_active,
+            is_superuser=is_superuser, last_login=time_now,
+            date_joined=time_now,**extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+class AbstractUser(AbstractBaseUser, PermissionsMixin):
+    class Meta:
+        abstract = True
+    name = models.CharField(max_length=100)
+    phone = models.CharField(validators=[phone_regex],
+        max_length=10, unique=True)
+    is_superuser = models.BooleanField('Superuser status', default=False)
+    is_active = models.BooleanField('Active', default=True)
+    date_joined = models.DateTimeField('Date joined', default=timezone.now)
+
+    USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = []
+
+    objects = UserManager()
+
+    def get_full_name(self):
+        return self.name
+
+    def get_short_name(self):
+        return self.name
+
+    def __str__(self):
+        return self.phone+" ("+self.phone+")"
+
+
+class User(AbstractUser):
+    objects = UserManager()
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
+    def __str__(self):
+        return self.name+" ("+self.phone+")"
+
+class BaseModel(models.Model):
+    active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True, blank=False)
+    last_updated = models.DateTimeField(auto_now=True, blank=False)
+
+    class Meta:
+        abstract=True
+
+class City(BaseModel):
+    name = models.CharField(max_length=50, db_index=True)
+    state = models.CharField(max_length=50, choices = constants.STATE_CHOICES)
+    def __str__(self):
+        return self.name
+
+class Area(BaseModel):
+    name = models.CharField(max_length=100, db_index=True)
+    city = models.ForeignKey(City)
+    def __str__(self):
+        return self.name+', '+str(self.city)
+
+
