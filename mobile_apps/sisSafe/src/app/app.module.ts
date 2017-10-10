@@ -46,6 +46,8 @@ import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
 import { Camera } from '@ionic-native/camera';
 import { Contacts} from '@ionic-native/contacts';
+
+import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
 @NgModule({
   declarations: [
     MyApp,
@@ -71,7 +73,8 @@ import { Contacts} from '@ionic-native/contacts';
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
-    AddContacts2Page
+    AddContacts2Page,
+    HomePopOverPage
   ],
   imports: [
     BrowserModule,
@@ -103,7 +106,8 @@ import { Contacts} from '@ionic-native/contacts';
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
-    AddContacts2Page
+    AddContacts2Page,
+    HomePopOverPage
   ],
   providers: [
     StatusBar,

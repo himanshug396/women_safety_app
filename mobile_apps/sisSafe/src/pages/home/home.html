@@ -1,8 +1,15 @@
-<ion-header>
+<ion-header id="homepageToolbars">
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      <div id="navbar_location_title" (click)="getmyLocation()">
+        <div id="select_location_text">Select Location</div>
+          <ion-icon name="pin"></ion-icon>
+           <span id="location_text">{{location}}</span>
+        </div>
     </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only style="padding:1em;padding-top:1.5em;" (click)="popOverPresent($event)"><ion-icon name="more"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

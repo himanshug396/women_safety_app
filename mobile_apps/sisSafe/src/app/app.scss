@@ -14,3 +14,32 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-backdrop{
+    opacity: 0.4;
+    background-color: white;
+}
+
+ion-navbar.toolbar{
+    background-color: #ed517c;
+    font-weight: 400;
+}
+.toolbar-background-md {
+    background-color: #e92f64;
+    filter :brightness(120%);
+    opacity: 1;
+
+} .toolbar-background-ios{
+      background-color: #ec4675;
+}
+
+ion-title .toolbar-title-md{
+    color:white;
+}
+ ion-title .toolbar-title-ios{
+    color:white;
+}
+
+ion-navbar .button-inner{
+    color:white
+}

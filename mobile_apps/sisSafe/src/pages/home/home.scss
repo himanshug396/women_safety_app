@@ -1,3 +1,25 @@
 page-home {
 
 }
+#select_location_text{
+    color: white;
+    font-size: 0.45em;
+    margin-left: 2.5em;
+    font-weight: 500;
+}
+#location_text{
+    font-size: .8em;
+    margin-left: 0.25em;
+
+    font-weight: 500;
+}
+.toolbar-title-md #navbar_location_title{
+    margin-left: .5em;
+    max-width: 9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+
+    font-weight: 500;
+    border-bottom: 0.8px solid white;
+}
