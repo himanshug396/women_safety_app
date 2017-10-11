@@ -5,7 +5,7 @@ import { NearestWhatPage} from '../nearest-what/nearest-what';
 import {AlertButtonPage} from '../alert-button/alert-button';
 import {DangerButtonPage} from '../danger-button/danger-button';
 import {KnowThisLocalityPage} from '../know-this-locality/know-this-locality';
-
+import { ClickUploadPage } from '../click-upload/click-upload';
 import { ClickAndUploadPage } from '../click-and-upload/click-and-upload';
 import {LoginPage} from '../login/login';
 import { AddContactsPage} from '../add-contacts/add-contacts';
@@ -64,4 +64,8 @@ export class HomePage {
   add_contacts(){
     this.navCtrl.push(AddContactsPage)
   }
+  ClickUpload(){
+    this.navCtrl.push(ClickUploadPage);
+  }
+  
 }

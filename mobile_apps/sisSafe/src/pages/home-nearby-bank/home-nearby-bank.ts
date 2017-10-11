@@ -26,4 +26,7 @@ export class HomeNearbyBankPage {
     console.log('ionViewDidLoad HomeNearbyBankPage');
   }
 
+  home(){
+    location.reload();
+  }
 }

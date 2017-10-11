@@ -30,7 +30,7 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 
 import { LocationsProvider } from '../providers/locations/locations';
 import { ClickAndUploadPage } from '../pages/click-and-upload/click-and-upload';
-
+import { ClickUploadPage } from '../pages/click-upload/click-upload';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { LoginPage} from '../pages/login/login';
 import { VerifyOtpPage} from '../pages/verify-otp/verify-otp';
@@ -74,7 +74,8 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
     AddContacts2Page,
-    HomePopOverPage
+    HomePopOverPage,
+    ClickUploadPage
   ],
   imports: [
     BrowserModule,
@@ -107,7 +108,8 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
     AddContacts2Page,
-    HomePopOverPage
+    HomePopOverPage,
+    ClickUploadPage
   ],
   providers: [
     StatusBar,
