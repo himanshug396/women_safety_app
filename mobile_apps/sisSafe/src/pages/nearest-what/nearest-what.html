@@ -7,30 +7,44 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>nearestWhat</ion-title>
+    <ion-title>Select your choice</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <p>
-    <button (click)="nearbyPolice()" ion-button>Police Stations</button>
-  </p>
-  <p>
-    <button (click)="nearbyHospital()" ion-button>Hospitals</button>
-  </p>
-  <p>
-    <button (click)="nearbyBank()" ion-button>ATM/Bank</button>
-  </p>
-  <p>
-    <button (click)="nearbyTaxi()" ion-button>Taxi Facility</button>
-  </p>
-  <p>
-    <button (click)="nearbyTravel()" ion-button>Travel(BUS/TRAIN)</button>
-  </p>
+  <ion-content class="card-background-page" style="background-color: #FAFAFA">
+  <!-- style="background-image : url('assets/images/back3.png');background-size:cover" -->
   
+  <div class="div-card">
+    <ion-card (click)="nearbyPolice()">
+      <img src="assets/icon/nearest/police1.jpg"/>
+      <div class="card-title">Police<br>Stations</div>
+    </ion-card>
   
+    <ion-card (click)="nearbyHospital()">
+      <img src="assets/icon/nearest/hospital.jpg"/>
+      <div class="card-title">Hospitals</div>
+    </ion-card>
   
+    <ion-card (click)="nearbyBank()"> 
+      <img src="assets/icon/nearest/banks.jpg"/>
+      <div class="card-title">Banks</div>
+    </ion-card>
+  
+    <ion-card (click)="nearbyTaxi()">
+      <img src="assets/icon/nearest/taxi.jpg"/>
+      <div class="card-title">Taxi Facility</div>
+    </ion-card>
+
+    <ion-card (click)="nearbyTravel()">
+      <img src="assets/icon/nearest/bus1.jpg"/>
+      <div class="card-title">Travel (Bus/Train)</div>
+    </ion-card>
+    <ion-card>
+      <!-- <img src="assets/icon/nearest/bus1.jpg"/> -->
+      <!-- <div class="card-title">Travel (Bus/Train)</div> -->
+    </ion-card>
+  </div>
   
 </ion-content>
