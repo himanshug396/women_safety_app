@@ -10,13 +10,14 @@ import nucleus.constants as constants
 class UserManager(BaseUserManager):
     def create_user(self, name, phone, **extra_fields):
         time_now = timezone.now()
+        is_staff = extra_fields.pop("is_staff", False)
         is_superuser = False
         if not name:
             raise ValueError('Name is not provided')
         if not phone:
             raise ValueError('Phone is not provided')
         is_active = extra_fields.pop("is_active", True)
-        user = self.model(name=name, phone=phone, is_active=is_active,
+        user = self.model(name=name, phone=phone, is_staff=is_staff, is_active=is_active,
             is_superuser=is_superuser, last_login=time_now,
             date_joined=time_now,**extra_fields)
         user.set_password(settings.MASTER_PASSWORD)
@@ -25,11 +26,12 @@ class UserManager(BaseUserManager):
     
     def create_superuser(self, phone, password, **extra_fields):
         time_now = timezone.now()
+        is_staff = True
         is_superuser = True
         if not phone:
             raise ValueError('Phone is not provided')
         is_active = extra_fields.pop("is_active", True)
-        user = self.model(phone=phone, is_active=is_active,
+        user = self.model(phone=phone, is_staff=is_staff, is_active=is_active,
             is_superuser=is_superuser, last_login=time_now,
             date_joined=time_now,**extra_fields)
         user.set_password(password)
@@ -42,6 +44,7 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
     phone = models.CharField(validators=[phone_regex],
         max_length=10, unique=True)
+    is_staff = models.BooleanField('Staff status', default=False)
     is_superuser = models.BooleanField('Superuser status', default=False)
     is_active = models.BooleanField('Active', default=True)
     date_joined = models.DateTimeField('Date joined', default=timezone.now)
@@ -59,7 +62,6 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.phone+" ("+self.phone+")"
-
 
 class User(AbstractUser):
     objects = UserManager()
