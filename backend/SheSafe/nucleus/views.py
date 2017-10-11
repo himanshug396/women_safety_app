@@ -7,6 +7,7 @@ import datetime
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions, exceptions, generics
+from knox.models import AuthToken
 
 from .utils import phone_regex, otp_regex, send_otp, verify_otp
 from .models import *
@@ -77,10 +78,12 @@ class VerifyOTP(APIView):
             })
         user.name = name
         user.save()
+        token = AuthToken.objects.create(user);
         user_logged_in.send(sender=user.__class__, request=request, user=user)
         return Response({
             "success":True,
             "message":"Verified successfully",
+            "token":token,
         })
 
 class CheckLoginState(APIView):

@@ -7,8 +7,19 @@ otp_regex = RegexValidator(regex=r'^\d{4}$',
     message="Phone number format not valid")
 
 def send_otp(phone):
-    return True
+    if settings.DEBUG:
+        return True
+    else: 
+        """
+           The code for integrating messaging service 
+           for production goes here.
+        """
 
 def verify_otp(phone, otp):
-   return True
+    if settings.DEBUG:
+        if(otp=="1234"):
+            return True
+        else:
+            return False
+ 
    
