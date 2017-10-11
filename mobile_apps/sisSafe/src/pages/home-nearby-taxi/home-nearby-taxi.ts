@@ -26,4 +26,7 @@ export class HomeNearbyTaxiPage {
     console.log('ionViewDidLoad HomeNearbyTaxiPage');
   }
 
+  home(){
+    location.reload();
+  }
 }

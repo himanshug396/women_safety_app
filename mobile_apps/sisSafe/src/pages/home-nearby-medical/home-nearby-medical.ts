@@ -26,4 +26,7 @@ export class HomeNearbyMedicalPage {
     console.log('ionViewDidLoad HomeNearbyMedicalPage');
   }
 
+  home(){
+    location.reload();
+  }
 }

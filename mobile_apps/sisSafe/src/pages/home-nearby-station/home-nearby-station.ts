@@ -26,4 +26,7 @@ export class HomeNearbyStationPage {
     console.log('ionViewDidLoad HomeNearbyStationPage');
   }
 
+  home(){
+    location.reload();
+  }
 }

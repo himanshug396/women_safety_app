@@ -23,5 +23,7 @@ export class HomeNearbyPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomeNearbyPage');
   }
-
+  home(){
+    location.reload();
+  }
 }
