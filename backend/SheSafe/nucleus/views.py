@@ -52,7 +52,7 @@ class VerifyOTP(APIView):
         if not phone_regex.regex.match(phone):
             raise exceptions.ParseError({
                 "success":False,
-                "message" : "Phone number format not valid",
+             	"message" : "Phone number format not valid",
             })
         if not otp_regex.regex.match(otp):
             raise exceptions.ParseError({

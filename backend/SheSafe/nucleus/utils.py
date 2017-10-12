@@ -1,4 +1,5 @@
 from django.core.validators import RegexValidator
+from django.conf import settings
 
 phone_regex = RegexValidator(regex=r'^[789]\d{9}$',
     message="Phone number format not valid")
@@ -21,5 +22,9 @@ def verify_otp(phone, otp):
             return True
         else:
             return False
- 
-   
+    else:
+        """
+          The code for verifying the otp sent via 
+          service goes here.
+        """
+     

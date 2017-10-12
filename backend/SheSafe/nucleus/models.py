@@ -88,7 +88,15 @@ class City(BaseModel):
 class Area(BaseModel):
     name = models.CharField(max_length=100, db_index=True)
     city = models.ForeignKey(City)
+    longitude = models.DecimalField(max_digits=12, decimal_places=9)
+    latitude = models.DecimalField(max_digits=12, decimal_places=9)
     def __str__(self):
         return self.name+', '+str(self.city)
 
-
+class Review(BaseModel):
+    area = models.ForeignKey(Area)
+    user = models.ForeignKey(User)
+    well_lit = models.IntegerField(default=0)
+    transport_availability = models.IntegerField(default=0)
+    crowded = models.IntegerField(default=0)
+    comment = models.CharField(max_length=500, blank=True, null=True)
