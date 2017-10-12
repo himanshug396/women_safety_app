@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapsNearbyPage } from '../pages/maps-nearby/maps-nearby';
@@ -48,6 +48,8 @@ import { Camera } from '@ionic-native/camera';
 import { Contacts} from '@ionic-native/contacts';
 
 import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
+import { NetworkErrorPage} from '../pages/network-error/network-error';
+import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-backend';
 @NgModule({
   declarations: [
     MyApp,
@@ -75,12 +77,14 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
     MapsNearbyTaxiPage,
     AddContacts2Page,
     HomePopOverPage,
-    ClickUploadPage
+    ClickUploadPage,
+    NetworkErrorPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,7 +113,8 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
     MapsNearbyTaxiPage,
     AddContacts2Page,
     HomePopOverPage,
-    ClickUploadPage
+    ClickUploadPage,
+    NetworkErrorPage
   ],
   providers: [
     StatusBar,
@@ -124,7 +129,8 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
     Transfer,
     FilePath,
     Camera,
-    Contacts
+    Contacts,
+    ShesafeBackendProvider
   ]
 })
 export class AppModule {}
