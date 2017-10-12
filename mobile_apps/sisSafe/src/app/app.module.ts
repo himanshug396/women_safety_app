@@ -29,7 +29,6 @@ import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 
 
 import { LocationsProvider } from '../providers/locations/locations';
-import { ClickAndUploadPage } from '../pages/click-and-upload/click-and-upload';
 import { ClickUploadPage } from '../pages/click-upload/click-upload';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { LoginPage} from '../pages/login/login';
@@ -62,7 +61,6 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    ClickAndUploadPage,
     TutorialPage,
     LoginPage,
     VerifyOtpPage,
@@ -98,7 +96,6 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    ClickAndUploadPage,
     TutorialPage,
     LoginPage,
     VerifyOtpPage,

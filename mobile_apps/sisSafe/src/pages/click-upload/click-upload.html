@@ -15,6 +15,7 @@
 
 
 <ion-content padding>
-
-
+  <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
+  
+  Download URL : <a>{{downloadUrl}}</a>
 </ion-content>
