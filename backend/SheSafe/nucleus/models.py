@@ -143,3 +143,14 @@ class Review(BaseModel):
     def __str__(self):
         return str(self.user)+', '+str(self.area)
 
+class ContactUs(BaseModel):
+    user = models.ForeignKey(User)
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.CharField(max_length=2000)
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return str(self.email)+" : "+self.subject
+
+
