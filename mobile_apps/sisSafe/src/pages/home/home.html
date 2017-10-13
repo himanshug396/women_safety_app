@@ -1,36 +1,48 @@
 <ion-header id="homepageToolbars">
   <ion-navbar>
     <ion-title>
-      <div id="navbar_location_title" (click)="getmyLocation()">
+      <div id="navbar_location_title" (tap)="getmyLocation()">
         <div id="select_location_text">Select Location</div>
-          <ion-icon name="pin"></ion-icon>
-           <span id="location_text">{{location}}</span>
-        </div>
+        <ion-icon name="pin"></ion-icon>
+        <span id="location_text">{{location}}</span>
+      </div>
     </ion-title>
     <ion-buttons end>
-        <button ion-button icon-only style="padding:1em;padding-top:1.5em;" (click)="popOverPresent($event)"><ion-icon name="more"></ion-icon></button>
+      <button ion-button icon-only style="padding:1em;padding-top:1.5em;" (tap)="popOverPresent($event)"><ion-icon name="more"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p>
-    <button (click)="nearbyPlaces()" ion-button>Nearby Places</button>
-  </p>
-  <p>
-    <button (click)="dangerbutton()" ion-button>Danger Button</button>
-  </p>
-  <p>
-    <button (click)="knowthislocality()" ion-button>Know about some locality.</button>
-  </p>
-  <p>
-    <button (click)="ClickAndUpload()" ion-button>Click and upload</button>
-  </p>
-  <p>
-    <button (click)="add_contacts()" ion-button>add_contacts</button>
-  </p>
-  <p>
-    <button (click)="ClickUpload()" ion-button>Click upload</button>
-  </p>
-  
+<ion-content padding id='ion-content-home'>
+  <ion-grid class='homepage_grid'>
+    <ion-row class='homepage_row' id="row1">
+      <ion-col (tap)="ClickUpload()" id='col1'> 
+        <img src="assets/icon/home/upload.png">
+        <br>
+        <p>Click & upload</p>
+      </ion-col>
+      <ion-col (tap)="nearbyPlaces()" id='col2'>
+        <img src="assets/icon/home/search.png">
+        <br>
+        <p>Search Near Places</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col id='col5'></ion-col>
+      <ion-col id='col6'></ion-col>
+    </ion-row>
+    <ion-row class='homepage_row' id="row2">
+      <ion-col (tap)="knowthislocality()" id='col3'>
+        <img src="assets/icon/home/info.png">
+        <br>
+        <p>Get Information</p>
+      </ion-col>
+
+      <ion-col (tap)="dangerbutton()" id='col4'>
+        <img src="assets/icon/home/sms.png">
+        <br>
+        <p>Send Alert</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

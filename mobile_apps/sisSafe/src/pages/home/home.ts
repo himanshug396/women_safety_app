@@ -60,6 +60,7 @@ export class HomePage {
   }
   dangerbutton(){
     this.navCtrl.push(DangerButtonPage);
+
   }
   alertbutton(){
     this.navCtrl.push(AlertButtonPage);
@@ -94,5 +95,6 @@ export class HomePage {
         alert("Error while accessing Camera. Try again later.")
         // Handle error
       });
-    }
+  }
+  
 }
