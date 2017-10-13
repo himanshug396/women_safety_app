@@ -83,15 +83,55 @@ class City(BaseModel):
     name = models.CharField(max_length=50, db_index=True)
     state = models.CharField(max_length=50, choices = constants.STATE_CHOICES)
     def __str__(self):
-        return self.name
+        return self.name+', '+ self.get_state_display()
 
 class Area(BaseModel):
     name = models.CharField(max_length=100, db_index=True)
     city = models.ForeignKey(City)
     longitude = models.DecimalField(max_digits=12, decimal_places=9)
     latitude = models.DecimalField(max_digits=12, decimal_places=9)
+    
+    @property
+    def well_lit(self):
+        reviews = Review.objects.filter(area = self)
+        count=0
+        rating=0.0
+        for review in reviews:
+            if(review.well_lit>0):
+                rating+=float(review.well_lit)
+                count+=1
+        if(count!=0):
+            rating = float(rating/count)
+        return round(rating, 1)
+    
+    @property
+    def transport(self):
+        reviews = Review.objects.filter(area = self)
+        count=0
+        rating=0.0
+        for review in reviews:
+            if(review.transport>0):
+                rating+=float(review.transport)
+                count+=1
+        if(count!=0):
+            rating = float(rating/count)
+        return round(rating, 1)
+    
+    @property
+    def crowded(self):
+        reviews = Review.objects.filter(area = self)
+        count=0
+        rating=0.0
+        for review in reviews:
+            if(review.crowded>0):
+                rating+=float(review.crowded)
+                count+=1
+        if(count!=0):
+            rating = float(rating/count)
+        return round(rating, 1)
+
     def __str__(self):
-        return self.name+', '+str(self.city)
+        return self.name+', '+str(self.city.name)
 
 class Review(BaseModel):
     area = models.ForeignKey(Area)
