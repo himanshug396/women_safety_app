@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Storage } from '@ionic/storage';
 import {LocalityDetailPage} from '../locality-detail/locality-detail';
 
 /**
@@ -15,8 +16,11 @@ import {LocalityDetailPage} from '../locality-detail/locality-detail';
   templateUrl: 'know-this-locality.html',
 })
 export class KnowThisLocalityPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  location:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage) {
+  let location = this.storage.get('location').then(()=>{
+    this.location = location;
+    });
   }
 
   ionViewDidLoad() {

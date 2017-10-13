@@ -32,11 +32,6 @@ export class ShesafeBackendProvider {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', 'Token '+authToken);
   }
-  public searchChoices(querytext){
-    return this.http.get(this.baseUrl+'/api/search/?query_string='+querytext,{
-      headers:this.headers
-    }).map(response=>response.json())
-  }
 
   public checkLoginState(){
     return Observable.create(observer=>{
@@ -69,8 +64,8 @@ export class ShesafeBackendProvider {
     }
   }
 
-  public verify(name,phone, otp, otp_token) {
-    if (name === null || phone === null || otp === null || otp_token === null) {
+  public verify(name,phone, otp, user_id) {
+    if (name === null || phone === null || otp === null || user_id === null) {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
@@ -78,7 +73,7 @@ export class ShesafeBackendProvider {
           name:name,
           phone:phone,
           otp:otp,
-          otp_token:otp_token
+          user_id:user_id
         }).map(response=>response.json()).subscribe(
           data=>{
             if(data.success){
@@ -95,6 +90,10 @@ export class ShesafeBackendProvider {
       });
     }
   }
-
+  public locationChoices(){
+    return this.http.get(this.baseUrl+'/listCities/',{
+      headers:this.headers
+    }).map(response=>response.json())
+  }
 
 }
