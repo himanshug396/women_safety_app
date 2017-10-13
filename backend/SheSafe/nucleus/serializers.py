@@ -4,7 +4,7 @@ from .models import *
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ('id', 'name')
+        fields = ('id', '__str__')
 
 class AreaSerializer(serializers.ModelSerializer):
     well_lit = serializers.StringRelatedField()
