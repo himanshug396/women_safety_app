@@ -36,7 +36,7 @@ export class MyApp {
               this.location_id = location_id;
               return this.storage.get('location');
             }).then((location)=>{
-              this.rootParams = {"location_id":this.location_id, 'location':location};
+              this.rootParams = {"location_id":this.location_id, "location":location};
               this.rootPage = HomePage;
               statusBar.styleDefault();
               splashScreen.hide();

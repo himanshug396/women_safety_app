@@ -21,7 +21,8 @@ import firebase from 'firebase';
 export class HomePage {
 
   lastImage: string = null;
-  location:any;
+  
+  location:string = 'Select Location';
   lat:any;
   long:any;
   captureDataUrl: string;
@@ -30,6 +31,9 @@ export class HomePage {
   constructor(public navParams:NavParams,public navCtrl: NavController, public popoverCtrl:PopoverController,private geolocation: Geolocation,public platform: Platform,
     private camera: Camera) {
       let location;
+      let rootParams = [];
+      
+      this.rootParams = rootParams;
       if(navParams.get('location')){
         location = navParams.get('location');
       }
