@@ -18,8 +18,7 @@ export class ShesafeBackendProvider {
   private authToken:String;
 
   
-  constructor(public http: Http,
-    private storage:Storage, ) {
+  constructor(public http: Http, private storage:Storage, ) {
     console.log('Hello ShesafeBackendProvider Provider');
   }
   public setAuthToken(authToken){
@@ -44,7 +43,7 @@ export class ShesafeBackendProvider {
       this.storage.get('authToken').then((authToken)=>{
         this.authToken = authToken;
         this.createHeaders(authToken);
-        this.http.post(this.baseUrl+'/checkLoginState',{},{
+        this.http.post(this.baseUrl+'/checkLoginState/',{},{
           headers:this.headers
         }).map(response=>response.json()).subscribe(
           data=>{
@@ -64,7 +63,7 @@ export class ShesafeBackendProvider {
       return Observable.throw("Please enter a valid phone number.");
     }
     else {
-      return this.http.post(this.baseUrl+'/api/auth/login/',{
+      return this.http.post(this.baseUrl+'/sendOtp/',{
         phone:phone
       }).map(response=>response.json());
     }
@@ -75,7 +74,7 @@ export class ShesafeBackendProvider {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        this.http.post(this.baseUrl+'/api/auth/verifyOtp/',{
+        this.http.post(this.baseUrl+'/verifyOtp/',{
           name:name,
           phone:phone,
           otp:otp,
