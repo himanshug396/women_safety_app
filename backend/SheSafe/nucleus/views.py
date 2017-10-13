@@ -129,3 +129,17 @@ class AddReview(APIView):
             })
         except Exception as e:
             raise exceptions.ParseError({"success":False, "message": str(e)})
+
+class Contact(APIView):
+    def post(self, request):
+        try:
+            email = request.data.get('email')
+            subject = request.data.get('subject')
+            message = request.data.get('message')
+            contact_us = ContactUs.objects.create(user=request.user, email=email, subject=subject, message=message)
+        except Exception as e:
+            print (e)
+            raise exceptions.ParseError({"success" : False, "message":str(e)})
+        return Response({"success":True})
+
+

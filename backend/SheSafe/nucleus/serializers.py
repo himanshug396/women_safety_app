@@ -4,12 +4,15 @@ from .models import *
 class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ('id', 'name')
+        fields = ('id', '__str__')
 
 class AreaSerializer(serializers.ModelSerializer):
+    well_lit = serializers.StringRelatedField()
+    transport = serializers.StringRelatedField()
+    crowded = serializers.StringRelatedField()
     class Meta:
         model = Area
-        fields = ('id', '__str__', 'longitude', 'latitude')
+        fields = ('id', '__str__', 'longitude', 'latitude', 'well_lit', 'transport', 'crowded')
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

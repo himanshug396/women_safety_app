@@ -5,7 +5,7 @@ phone_regex = RegexValidator(regex=r'^[789]\d{9}$',
     message="Phone number format not valid")
 
 otp_regex = RegexValidator(regex=r'^\d{4}$',
-    message="Phone number format not valid")
+    message="otp format not valid")
 
 def send_otp(phone):
     if settings.DEBUG:

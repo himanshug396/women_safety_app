@@ -11,4 +11,5 @@ urlpatterns = [
   url(r'^listAreas/$', views.ListAreas.as_view(), name='listAreas'),
   url(r'^listReviews/$', views.ListReviews.as_view(), name='listReviews'),
   url(r'^addReview/$', views.AddReview.as_view(), name='addReview'),
+  url(r'^contactUs/$', views.Contact.as_view(), name='contactUs'),
 ]
