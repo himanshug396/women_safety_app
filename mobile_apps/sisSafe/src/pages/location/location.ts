@@ -22,23 +22,23 @@ export class LocationPage {
   loading: Loading;
   loading_var: Boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private shesafeBackend: ShesafeBackendProvider) {
-    // this.shesafeBackend.locationChoices().subscribe(
-    //   data => {
-    //     this.locationChoices = data;
-    //     console.log(data)
-    //   },
-    //   err => {
-    //     console.error(err);
-    //     let alert = this.alertCtrl.create({
-    //       title: 'Fail',
-    //       subTitle: 'Error while getting location.Please check your connection and try again.',
-    //       buttons: ['OK']
-    //     });
-    //     alert.present(prompt);
+    this.shesafeBackend.locationChoices().subscribe(
+      data => {
+        this.locationChoices = data;
+        console.log(data)
+      },
+      err => {
+        console.error(err);
+        let alert = this.alertCtrl.create({
+          title: 'Fail',
+          subTitle: 'Error while getting location.Please check your connection and try again.',
+          buttons: ['OK']
+        });
+        alert.present(prompt);
 
-    //   }
-    // )
-    this.navCtrl.push(HomePage)
+      }
+    )
+    // this.navCtrl.push(HomePage)
   }
   locationSelected(location) {
     this.selectedLocation = location.name;

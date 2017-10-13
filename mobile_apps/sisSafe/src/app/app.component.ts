@@ -20,7 +20,7 @@ export class MyApp {
   rootPage:any;
   rootParams:any;
   loggedIn:Boolean;
-  location_ekey;
+  location_id;
   loading:Loading;
   loading_var:Boolean=false;
   
@@ -32,11 +32,11 @@ export class MyApp {
       platform.ready().then(() => {
         this.shesafeBackend.checkLoginState().subscribe(
           (data)=>{
-            this.storage.get('location_ekey').then((location_ekey)=>{
-              this.location_ekey = location_ekey;
+            this.storage.get('location_id').then((location_id)=>{
+              this.location_id = location_id;
               return this.storage.get('location');
             }).then((location)=>{
-              this.rootParams = {"location_ekey":this.location_ekey, 'location':location};
+              this.rootParams = {"location_id":this.location_id, 'location':location};
               this.rootPage = HomePage;
               statusBar.styleDefault();
               splashScreen.hide();
@@ -58,7 +58,7 @@ export class MyApp {
                 this.loading.dismiss();
               }
             console.log(err);
-            if(err.status==0){
+            if(err.status==401){
               this.rootPage = LoginPage;
               statusBar.styleDefault();
               splashScreen.hide();

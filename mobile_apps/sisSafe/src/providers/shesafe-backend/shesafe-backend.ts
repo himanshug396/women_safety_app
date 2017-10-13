@@ -38,7 +38,7 @@ export class ShesafeBackendProvider {
       this.storage.get('authToken').then((authToken)=>{
         this.authToken = authToken;
         this.createHeaders(authToken);
-        this.http.post(this.baseUrl+'/checkLoginState/',{},{
+        this.http.post(this.baseUrl+'/api/checkLoginState/',{},{
           headers:this.headers
         }).map(response=>response.json()).subscribe(
           data=>{
@@ -58,7 +58,7 @@ export class ShesafeBackendProvider {
       return Observable.throw("Please enter a valid phone number.");
     }
     else {
-      return this.http.post(this.baseUrl+'/sendOtp/',{
+      return this.http.post(this.baseUrl+'/api/sendOtp/',{
         phone:phone
       }).map(response=>response.json());
     }
@@ -69,7 +69,7 @@ export class ShesafeBackendProvider {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        this.http.post(this.baseUrl+'/verifyOtp/',{
+        this.http.post(this.baseUrl+'/api/verifyOtp/',{
           name:name,
           phone:phone,
           otp:otp,
@@ -91,7 +91,7 @@ export class ShesafeBackendProvider {
     }
   }
   public locationChoices(){
-    return this.http.get(this.baseUrl+'/listCities/',{
+    return this.http.get(this.baseUrl+'/api/listCities/',{
       headers:this.headers
     }).map(response=>response.json())
   }
