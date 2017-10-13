@@ -73,3 +73,14 @@ ion-navbar .button-inner{
     float:right;
     padding:0.5em;
 }
+.fixed-content {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    display: block;
+}
+.fix_the_content .scroll-content{
+    // position: fixed;
+}

@@ -1,5 +1,9 @@
 page-home {
-
+    vertical-align: middle;
+}
+#ion-content-home{
+    background-color: rgba(248,208,217,0.1);
+    
 }
 #select_location_text{
     color: white;
@@ -23,3 +27,45 @@ page-home {
     font-weight: 500;
     border-bottom: 0.8px solid white;
 }
+.homepage_grid{
+    text-align: center;
+    padding-top:8%;
+
+}
+.homepage_grid .homepage_row ion-col img{
+    width: 13em;
+    padding:2em;
+    padding-bottom: 1em;
+}
+.homepage_grid ion-col:hover{
+    background-color:#FFD1D9;
+    border-radius: 2em;
+    z-index: 1000;
+}
+.homepage_grid ion-col{
+    // border:0.2px solid #FFD1D9;
+    margin:0em;
+    // background-color: white;
+}
+.homepage_grid ion-col p{
+    font-size: 1.2em;
+    color:#111;
+    font-weight: 500;
+    padding:0.5em;
+}
+#col1{
+    border-right:0.2px solid #FFD1D9;
+}
+#col4{
+   border-left:0.2px solid #FFD1D9;
+}
+#col5,#col6{
+ border-top:0.2px solid #FFD1D9;
+ margin:0.5em; 
+ height: 1px;  
+}
+#row1{
+    margin-bottom:0.3em;
+}
+
+
