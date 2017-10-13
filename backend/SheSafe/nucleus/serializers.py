@@ -11,8 +11,14 @@ class AreaSerializer(serializers.ModelSerializer):
         model = Area
         fields = ('id', '__str__', 'longitude', 'latitude')
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'name')
+
 class ReviewSerializer(serializers.ModelSerializer):
-    area = AreaSerializer() 
+    area = AreaSerializer()
+    user = UserSerializer() 
     class Meta:
         model = Review
-        fields = ('id', 'area', 'well_lit', 'transport', 'crowded', 'comment')
+        fields = ('id', 'area', 'user', 'well_lit', 'transport', 'crowded', 'comment')
