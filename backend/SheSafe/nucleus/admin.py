@@ -40,3 +40,4 @@ class UserAdmin(UserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(City)
 admin.site.register(Area)
+admin.site.register(Review)
