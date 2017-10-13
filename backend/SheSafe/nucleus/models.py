@@ -97,6 +97,9 @@ class Review(BaseModel):
     area = models.ForeignKey(Area)
     user = models.ForeignKey(User)
     well_lit = models.IntegerField(default=0)
-    transport_availability = models.IntegerField(default=0)
+    transport = models.IntegerField(default=0)
     crowded = models.IntegerField(default=0)
-    comment = models.CharField(max_length=500, blank=True, null=True)
+    comment = models.CharField(max_length=500, null=True, blank=True)
+    def __str__(self):
+        return str(self.user)+', '+str(self.area)
+

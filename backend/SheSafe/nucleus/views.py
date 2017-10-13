@@ -83,11 +83,49 @@ class VerifyOTP(APIView):
         return Response({
             "success":True,
             "message":"Verified successfully",
-            "token":token,
+            "token":token
         })
 
 class CheckLoginState(APIView):
     def post(self, request):
         return Response({"success":True})
+ 
+class ListCities(generics.ListAPIView):
+    queryset = City.objects.filter(active=True)
+    serializer_class = CitySerializer
 
+class ListAreas(generics.ListAPIView):
+    serializer_class = AreaSerializer
+    def get_queryset(self):
+        try:
+            city_id = self.request.GET.get('city_id')
+            return Area.objects.filter(city=city_id, active=True)
+        except Exception as e:
+            raise exceptions.ParseError({"success":False, "message":str(e)})  
 
+class ListReviews(generics.ListAPIView):
+    serializer_class = ReviewSerializer
+    def get_queryset(self):
+        try:
+            area_id = self.request.GET.get('area_id')
+            return Review.objects.filter(area=area_id, active=True) 
+        except Exception as e:
+            raise exceptions.ParseError({"success":False, "message":str(e)})  
+   
+class AddReview(APIView):
+    def post(self, request):
+        try: 
+            user = self.request.user
+            area = Area.objects.get(id=request.data.get("area_id"))
+            review, created = Review.objects.get_or_create(user=user, area=area)
+            review.well_lit = request.data.get("well_lit")
+            review.transport = request.data.get("transport")
+            review.crowded = request.data.get("crowded")
+            review.comment = request.data.get("comment")
+            review.save()
+            return Response({
+                "success":True,
+                "message" : "Review created successfully"
+            })
+        except Exception as e:
+            raise exceptions.ParseError({"success":False, "message": str(e)})
