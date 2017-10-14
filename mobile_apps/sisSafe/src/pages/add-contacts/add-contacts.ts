@@ -4,7 +4,6 @@ import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-
 import {HomePage} from '../home/home';
 // import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
-import {AddContacts2Page} from '../add-contacts2/add-contacts2';
 /**
  * Generated class for the AddContactsPage page.
  *

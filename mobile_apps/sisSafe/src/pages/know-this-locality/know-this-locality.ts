@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
-import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
+// import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 // import { Storage } from '@ionic/storage';
 import { LocalityDetailPage } from '../locality-detail/locality-detail';
 import { HomePage } from '../home/home';
@@ -19,8 +19,7 @@ export class KnowThisLocalityPage {
   location: any;
   areas:any=[];
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-              private alertCtrl: AlertController, private loadingCtrl: LoadingController, 
-              private shesafeBackend: ShesafeBackendProvider) {
+              private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     let location;
     if (navParams.get('location')) {
       location = navParams.get('location');

@@ -1,7 +1,7 @@
 {
     "name": "SheSafe",
     "version": "0.0.1",
-    "author": "Ionic Framework",
+    "author": "himanshugupta.396@gmail.com",
     "homepage": "http://ionicframework.com/",
     "private": true,
     "scripts": {
@@ -58,7 +58,7 @@
         "@ionic/app-scripts": "3.0.0",
         "typescript": "2.3.4"
     },
-    "description": "An Ionic project",
+    "description": "A women safety application developed by IITRk juniors",
     "cordova": {
         "plugins": {
             "cordova-plugin-network-information": {},

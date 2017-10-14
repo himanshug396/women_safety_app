@@ -48,14 +48,16 @@ export class LocationPage {
     this.selectedLocation = location.__str__;
     this.storage.set('location', location.__str__);
     this.storage.set('location_id', location.id);
+    this.showLoading();
     this.shesafeBackend.listContacts().subscribe(
       data => {
         this.contacts = data;
         console.log(data)
+        this.loading.dismiss();
         this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ ,'contacts':data});
-    
       },
       err => {
+        this.loading.dismiss();
         console.error(err);
         let alert = this.alertCtrl.create({
           title: 'Fail',
@@ -63,7 +65,6 @@ export class LocationPage {
           buttons: ['OK']
         });
         alert.present(prompt);
-
       }
     )
   }

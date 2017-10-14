@@ -32,7 +32,6 @@ import { ClickUploadPage } from '../pages/click-upload/click-upload';
 import { LoginPage} from '../pages/login/login';
 import { VerifyOtpPage} from '../pages/verify-otp/verify-otp';
 import {AddContactsPage} from '../pages/add-contacts/add-contacts';
-import {AddContacts2Page} from '../pages/add-contacts2/add-contacts2';
 import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -72,7 +71,6 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
-    AddContacts2Page,
     HomePopOverPage,
     ClickUploadPage,
     NetworkErrorPage,
@@ -111,7 +109,6 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     MapsNearbyMedicalPage,
     MapsNearbyStationPage,
     MapsNearbyTaxiPage,
-    AddContacts2Page,
     HomePopOverPage,
     ClickUploadPage,
     NetworkErrorPage,
