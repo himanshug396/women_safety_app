@@ -97,13 +97,6 @@ class AddContacts(APIView):
             contacts = request.data.get("contacts")
             print (contacts)
             for phone in contacts:
-                """
-                if not phone_regex.regex.match(phone):
-                    raise exceptions.ParseError({
-                        "success":False,
-             	        "message" : "Phone number format not valid",
-                    })
-                """
                 user_contact, created = UserContact.objects.get_or_create(user=user, phone=phone)
             return Response({
                 "success":True,
