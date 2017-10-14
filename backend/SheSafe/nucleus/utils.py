@@ -27,4 +27,10 @@ def verify_otp(phone, otp):
           The code for verifying the otp sent via 
           service goes here.
         """
-     
+def send_sms(phone, message):
+    if settings.DEBUG:
+        return True
+    else:
+        """
+          The code for sending custom sms via service goes here.    
+        """ 

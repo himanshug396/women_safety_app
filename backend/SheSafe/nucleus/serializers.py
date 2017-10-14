@@ -19,6 +19,11 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'name')
 
+class UserContactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserContact
+        fields = ('id', 'phone')
+
 class ReviewSerializer(serializers.ModelSerializer):
     area = AreaSerializer()
     user = UserSerializer() 

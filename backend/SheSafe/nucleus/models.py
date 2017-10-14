@@ -79,6 +79,12 @@ class BaseModel(models.Model):
     class Meta:
         abstract=True
 
+class UserContact(BaseModel):
+    user = models.ForeignKey(User)
+    phone = models.CharField(validators=[phone_regex], max_length=10)
+    def __str__(self):
+        return str(self.user.name)+' - '+self.phone
+
 class City(BaseModel):
     name = models.CharField(max_length=50, db_index=True)
     state = models.CharField(max_length=50, choices = constants.STATE_CHOICES)
