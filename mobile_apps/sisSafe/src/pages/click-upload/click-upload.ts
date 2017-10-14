@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
+import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 // import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
 /**
@@ -16,8 +17,8 @@ import firebase from 'firebase';
 })
 export class ClickUploadPage {
   captureDataUrl: string;
-  downloadUrl:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, ) {
+  downloadUrl:string="";
+  constructor(public navCtrl: NavController, public navParams: NavParams,private shesafeBackend:ShesafeBackendProvider) {
     this.captureDataUrl = this.navParams.get('captureDataUrl');
     this.upload();
 }
@@ -40,5 +41,18 @@ export class ClickUploadPage {
     }).catch((err)=>{
       alert(err + '     ' + err.message)
     });
+  }
+  share(){
+  
+    this.shesafeBackend.sendImage(this.downloadUrl).subscribe(data => {
+      if (data.success) {
+        alert(data.message)
+      } else {
+        alert("Failed. Check your connection and try again.");
+      }
+    },
+      error => {
+        alert("Some Error Occured. Please check your network and try again.");
+      });
   }
 }

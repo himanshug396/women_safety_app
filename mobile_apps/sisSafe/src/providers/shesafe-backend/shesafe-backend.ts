@@ -119,6 +119,23 @@ export class ShesafeBackendProvider {
     }).map(response=>response.json());
   }
   
+  public alertContacts(location){
+    return this.http.post(this.baseUrl+'/api/alertContacts/',{
+      'location':location,
+    },{
+      headers:this.headers
+    }).map(response=>response.json());
+  }
+  
+  public sendImage(link){
+    return this.http.post(this.baseUrl+'/api/sendImage/',{
+      'link':link,
+    },{
+      headers:this.headers
+    }).map(response=>response.json());
+  }
+  
+  
   public addReview(area_id,well_lit,transport,crowded,comment){
     return this.http.post(this.baseUrl+'/api/addReview/',{
       'area_id':area_id,
@@ -132,7 +149,7 @@ export class ShesafeBackendProvider {
   }
   
   public contact(email,subject,message){
-    return this.http.post(this.baseUrl+'/api/contact/',{
+    return this.http.post(this.baseUrl+'/api/contactUs/',{
       'email':email,
       'subject':subject,
       'message':message,

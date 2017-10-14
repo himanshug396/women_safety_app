@@ -7,8 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>clickUpload</ion-title>
-    <button (tap)="doGetPicture()">Photo</button>
+    <ion-title>Share Picture</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +15,7 @@
 
 <ion-content padding>
   <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
-  <button ion-button full >Send Picture to My Contacts</button>
+  <button ion-button full *ngIf="downloadUrl.length != 0" (tap)='share()'>Send Picture to My Contacts</button>
+  
   Download URL : <a>{{downloadUrl}}</a>
 </ion-content>

@@ -122,6 +122,16 @@ export class HomePage {
             text: 'Send',
             handler: () => {
               console.log('Send clicked');
+              this.shesafeBackend.alertContacts(this.location_link).subscribe(data => {
+                if (data.success) {
+                  alert(data.message)
+                } else {
+                  alert("Failed. Check your connection and try again.");
+                }
+              },
+                error => {
+                  alert("Some Error Occured. Please check your network and try again.");
+                });
             }
           }
         ]

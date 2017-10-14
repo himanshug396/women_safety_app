@@ -11,7 +11,7 @@ import { MapsNearbyBankPage } from '../pages/maps-nearby-bank/maps-nearby-bank';
 import { MapsNearbyMedicalPage } from '../pages/maps-nearby-medical/maps-nearby-medical';
 import { MapsNearbyTaxiPage } from '../pages/maps-nearby-taxi/maps-nearby-taxi';
 import { MapsNearbyStationPage } from '../pages/maps-nearby-station/maps-nearby-station';
-
+import {TermsAndConditionsPage} from '../pages/terms-and-conditions/terms-and-conditions';
 import { ListNearbyPage } from '../pages/list-nearby/list-nearby';
 import { HomeNearbyBankPage } from '../pages/home-nearby-bank/home-nearby-bank';
 import { HomeNearbyPage } from '../pages/home-nearby/home-nearby';
@@ -80,7 +80,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ContactUsPage,
     ExpandableHeaderComponent,
     AddReviewPage,
-    MapsPage
+    MapsPage,
+    TermsAndConditionsPage
   ],
   imports: [
     BrowserModule,
@@ -117,7 +118,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     LocationPage,
     ContactUsPage,
     AddReviewPage,
-    MapsPage
+    MapsPage,
+    TermsAndConditionsPage
   ],
   providers: [
     StatusBar,

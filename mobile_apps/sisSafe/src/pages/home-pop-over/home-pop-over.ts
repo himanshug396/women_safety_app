@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import { AddContactsPage} from '../add-contacts/add-contacts';
 import { LoginPage} from '../login/login';
+import {TermsAndConditionsPage} from '../terms-and-conditions/terms-and-conditions';
 import { ContactUsPage} from '../contact-us/contact-us';
 /**
  * Generated class for the HomePopOverPage page.
@@ -30,21 +31,11 @@ export class HomePopOverPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
-  openFAQs(){
-    // this.pibitBackend.faqs().subscribe(data=>{
-    //     this.navCtrl.push(FaqsPage,{
-    //       'faqs':data
-    //     });
-    //     console.log(data);
-    // },err=>{
-    //   console.error(err);
-    // });
-  }
   openContactUs(){
     this.navCtrl.push(ContactUsPage);
   }
   openTermsConditions(){
-    // this.navCtrl.push(TermsAndConditionsPage);
+    this.navCtrl.push(TermsAndConditionsPage);
   }
   addContacts(){
     this.navCtrl.push(AddContactsPage)
