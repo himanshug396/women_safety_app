@@ -124,7 +124,8 @@ class ListContacts(generics.ListAPIView):
 class AlertContacts(APIView):
     def post(self, request):
         try:
-            user_contacts = UserContact.objects.filter(self.request.user)
+            user = self.request.user
+            user_contacts = UserContact.objects.filter(user=user, active=True)
             location_sms = "Hey, I need help " + request.data.get("location", "")
             for contact in user_contacts:
                 send_sms(contact.phone, location_sms)
@@ -138,9 +139,9 @@ class AlertContacts(APIView):
 class SendImage(APIView):
     def post(self, request):
         try:
-            user_contacts = UserContact.objects.filter(self.request.user)
-            link = request.data.get("link", "")
-            image_sms = "Hey, I need help "+ link
+            user = self.request.user
+            user_contacts = UserContact.objects.filter(user=user, active=True)
+            image_sms = "Hey, I need help "+ request.data.get("link", "") 
             for contact in user_contacts:
                 send_sms(contact.phone, image_sms)
             return Response({
