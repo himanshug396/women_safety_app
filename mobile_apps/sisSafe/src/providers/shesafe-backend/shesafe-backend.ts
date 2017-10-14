@@ -32,18 +32,13 @@ export class ShesafeBackendProvider {
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Authorization', 'Token '+authToken);
   }
-  public searchChoices(querytext){
-    return this.http.get(this.baseUrl+'/api/search/?query_string='+querytext,{
-      headers:this.headers
-    }).map(response=>response.json())
-  }
 
   public checkLoginState(){
     return Observable.create(observer=>{
       this.storage.get('authToken').then((authToken)=>{
         this.authToken = authToken;
         this.createHeaders(authToken);
-        this.http.post(this.baseUrl+'/checkLoginState/',{},{
+        this.http.post(this.baseUrl+'/api/checkLoginState/',{},{
           headers:this.headers
         }).map(response=>response.json()).subscribe(
           data=>{
@@ -63,22 +58,22 @@ export class ShesafeBackendProvider {
       return Observable.throw("Please enter a valid phone number.");
     }
     else {
-      return this.http.post(this.baseUrl+'/sendOtp/',{
+      return this.http.post(this.baseUrl+'/api/sendOtp/',{
         phone:phone
       }).map(response=>response.json());
     }
   }
 
-  public verify(name,phone, otp, otp_token) {
-    if (name === null || phone === null || otp === null || otp_token === null) {
+  public verify(name,phone, otp, user_id) {
+    if (name === null || phone === null || otp === null || user_id === null) {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        this.http.post(this.baseUrl+'/verifyOtp/',{
+        this.http.post(this.baseUrl+'/api/verifyOtp/',{
           name:name,
           phone:phone,
           otp:otp,
-          otp_token:otp_token
+          user_id:user_id
         }).map(response=>response.json()).subscribe(
           data=>{
             if(data.success){
@@ -95,6 +90,10 @@ export class ShesafeBackendProvider {
       });
     }
   }
-
+  public locationChoices(){
+    return this.http.get(this.baseUrl+'/api/listCities/',{
+      headers:this.headers
+    }).map(response=>response.json())
+  }
 
 }

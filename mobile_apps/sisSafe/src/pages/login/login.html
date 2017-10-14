@@ -9,7 +9,7 @@
 <ion-content padding style="padding-bottom:0" fixed>
     <img id="shesafe-logo" src="assets/images/logo.png" style="padding-top:3em"/>
     
-  <!-- <form (submit)="login()" #registerForm="ngForm"> -->
+  <form (submit)="login()" #registerForm="ngForm">
     <ion-item style="margin-left:-6px">
       <ion-label floating class="phone-text">Name</ion-label>
       <ion-input name="name" type="text" class="form-control phone-textbox" required minlength="2" maxlength="100" [(ngModel)]="name"></ion-input>
@@ -18,9 +18,9 @@
       <ion-label floating class="phone-text">Phone</ion-label>
       <ion-input name="phone" type="tel" class="form-control phone-textbox" required minlength="10" maxlength="10" [(ngModel)]="phone"></ion-input>
     </ion-item>
-    <button type="submit" id="button_send_otp" ion-button full round (click)="otpPage()">Send OTP</button>
-  
-    <!-- <button type="submit" id="button_send_otp" ion-button full round [disabled]="!registerForm.form.valid">Send OTP</button> -->
-  <!-- </form> -->
+    <!-- <button type="submit" id="button_send_otp" ion-button full round (click)="otpPage()">Send OTP</button>
+   -->
+    <button type="submit" id="button_send_otp" ion-button full round [disabled]="!registerForm.form.valid">Send OTP</button>
+  </form>
 
 </ion-content>

@@ -27,6 +27,7 @@ import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 
+import { LocationPage } from '../pages/location/location';
 
 import { LocationsProvider } from '../providers/locations/locations';
 import { ClickUploadPage } from '../pages/click-upload/click-upload';
@@ -76,7 +77,8 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     AddContacts2Page,
     HomePopOverPage,
     ClickUploadPage,
-    NetworkErrorPage
+    NetworkErrorPage,
+    LocationPage
   ],
   imports: [
     BrowserModule,
@@ -111,7 +113,8 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     AddContacts2Page,
     HomePopOverPage,
     ClickUploadPage,
-    NetworkErrorPage
+    NetworkErrorPage,
+    LocationPage
   ],
   providers: [
     StatusBar,

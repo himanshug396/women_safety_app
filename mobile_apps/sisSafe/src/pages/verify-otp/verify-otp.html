@@ -15,15 +15,15 @@
     <div class="user_details_edit_container_line">Mobile : {{phone}}</div>
     <div (click)="openLoginPageBack()" id="edit_button">Edit</div>
   </div>
-  <!-- <form (submit)="verify()" #verifyForm="ngForm"> -->
+  <form (submit)="verify()" #verifyForm="ngForm">
     <ion-item style="margin-left:-6px">
       <ion-label floating>OTP</ion-label>
       <ion-input name="otp" type="tel" class="form-control" required minlength="4" maxlength="6" [(ngModel)]="otp"></ion-input>
     </ion-item>
-    <button type="submit" id="button_verify_otp" ion-button full round (click)="otpverify()">Verify OTP</button>
-    <!-- <button type="submit" id="button_verify_otp" ion-button full round [disabled]="!verifyForm.form.valid">Verify OTP</button> -->
+    <!-- <button type="submit" id="button_verify_otp" ion-button full round (click)="otpverify()">Verify OTP</button> -->
+    <button type="submit" id="button_verify_otp" ion-button full round [disabled]="!verifyForm.form.valid">Verify OTP</button>
     
-  <!-- </form> -->
+  </form>
   <p style="text-align:center" id="resend_otp">
   <button (click)="otp_resend()">Resend OTP</button>
   </p>

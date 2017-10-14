@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController, Platform} from 'ionic-angular';
+import { NavController, PopoverController, Platform, NavParams} from 'ionic-angular';
 
 import { NearestWhatPage} from '../nearest-what/nearest-what';
 import {AlertButtonPage} from '../alert-button/alert-button';
@@ -11,7 +11,7 @@ import { AddContactsPage} from '../add-contacts/add-contacts';
 import { HomePopOverPage} from '../home-pop-over/home-pop-over';
 
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { LocationPage} from '../location/location';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
 @Component({
@@ -21,13 +21,41 @@ import firebase from 'firebase';
 export class HomePage {
 
   lastImage: string = null;
-  location = 'Roorkee,Uttrakhand'
+  
+  location:string = 'Select Location';
   lat:any;
   long:any;
   captureDataUrl: string;
-  
-  constructor(public navCtrl: NavController, public popoverCtrl:PopoverController,private geolocation: Geolocation,public platform: Platform,
+  rootParams:any[];
+  location_id;
+  constructor(public navParams:NavParams,public navCtrl: NavController, public popoverCtrl:PopoverController,private geolocation: Geolocation,public platform: Platform,
     private camera: Camera) {
+      let location;
+      let rootParams = [];
+      
+      this.rootParams = rootParams;
+      if(navParams.get('location')){
+        location = navParams.get('location');
+      }
+      else{
+        location = (navCtrl as any).rootParams['location'];
+      }
+      
+      let location_id;
+      if(navParams.get('location_id')){
+        location_id = navParams.get('location_id');
+      }else{
+        location_id = (navCtrl as any).rootParams['location_id'];
+      }
+  
+      console.log(12345);
+      console.log(location);
+      console.log(location_id);
+      this.location = location;
+      this.location_id = location_id;
+      if(!location_id){
+          this.navCtrl.push(LocationPage);
+      }
       const config = {
         apiKey: "AIzaSyA7rRR0AuyFE8avuHgZkFWW7THWkO2UzWk",
         authDomain: "shesafe-1507014992380.firebaseapp.com",
@@ -35,7 +63,9 @@ export class HomePage {
         storageBucket: "gs://shesafe-1507014992380.appspot.com",
         messagingSenderId: "644783142839"
       };
-      firebase.initializeApp(config);
+      !firebase.apps.length ? firebase.initializeApp(config) : firebase.app();
+      
+      // firebase.initializeApp(config);
   }
 
   popOverPresent(event) {
@@ -46,14 +76,16 @@ export class HomePage {
     });
   }
   getmyLocation(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.lat=  resp.coords.latitude;
-      this.long = resp.coords.longitude;
-      console.log(this.lat,this.long)
-      // http://maps.googleapis.com/maps/api/geocode/json?latlng=29.871384499999998,77.8953413&sensor=true
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+    
+    this.navCtrl.push(LocationPage);
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   this.lat=  resp.coords.latitude;
+    //   this.long = resp.coords.longitude;
+    //   console.log(this.lat,this.long)
+    //   // http://maps.googleapis.com/maps/api/geocode/json?latlng=29.871384499999998,77.8953413&sensor=true
+    //  }).catch((error) => {
+    //    console.log('Error getting location', error);
+    //  });
   }
   nearbyPlaces(){
     this.navCtrl.push(NearestWhatPage);
@@ -67,7 +99,10 @@ export class HomePage {
     
   }
   knowthislocality(){
-    this.navCtrl.push(KnowThisLocalityPage);
+    this.navCtrl.push(KnowThisLocalityPage,{
+      'location':this.location,
+      'location_id':this.location_id
+    });
   }
   login(){
     this.navCtrl.push(LoginPage);

@@ -1,7 +1,6 @@
-import { Component, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
-// import * as firebase from 'firebase';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
+// import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
 /**
  * Generated class for the ClickUploadPage page.
@@ -18,9 +17,7 @@ import firebase from 'firebase';
 export class ClickUploadPage {
   captureDataUrl: string;
   downloadUrl:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public platform: Platform,
-    private camera: Camera, ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, ) {
     this.captureDataUrl = this.navParams.get('captureDataUrl');
     this.upload();
 }
