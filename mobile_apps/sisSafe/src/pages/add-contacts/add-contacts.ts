@@ -18,24 +18,23 @@ import {AddContacts2Page} from '../add-contacts2/add-contacts2';
 })
 export class AddContactsPage {
   selectedContacts = [];
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    // private contacts: Contacts
-  ) {
+  location;
+  location_id;
+  count:any = 0;
+  val:any = 'SKIP';
+  constructor(public navCtrl: NavController, public navParams: NavParams,) {
+    let location = navParams.get('location');
+    let location_id = navParams.get('location_id');
+    this.location = location;
+    this.location_id = location_id;
+    if(this.count!=0)
+      this.val = 'Go To Home';
   }
-
-  // selectContact(){
-  //   navigator.contacts.pickContact(function(contact){
-  //       console.log('The following contact has been selected:' + JSON.stringify(contact));
-  //   },function(err){
-  //       console.log('Error: ' + err);
-  //   });
-  // }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContactsPage');
   }
   skip(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage,{ 'location_id': this.location_id, 'location': this.location });
   }
 
   addcontact(){

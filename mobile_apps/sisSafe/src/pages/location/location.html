@@ -16,7 +16,7 @@
 <ion-content>
     <ion-list style="">
       <button ion-item *ngFor="let location of locationChoices" (click)="locationSelected(location)" icon-left>
-        {{location.name}}
+        {{location.__str__}}
       </button>
     </ion-list>
     

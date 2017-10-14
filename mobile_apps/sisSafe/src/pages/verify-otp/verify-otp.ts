@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading,ToastController} from 'ionic-angular';
-import { AddContactsPage} from '../add-contacts/add-contacts';
-import { LoginPage} from '../login/login';
+// import { AddContactsPage} from '../add-contacts/add-contacts';
+// import { LoginPage} from '../login/login';
 import { LocationPage} from '../location/location';
 
 import { ShesafeBackendProvider} from '../../providers/shesafe-backend/shesafe-backend';

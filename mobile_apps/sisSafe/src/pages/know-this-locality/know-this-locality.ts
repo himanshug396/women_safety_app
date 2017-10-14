@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { Storage } from '@ionic/storage';
+// import { Storage } from '@ionic/storage';
 import {LocalityDetailPage} from '../locality-detail/locality-detail';
 import {HomePage} from '../home/home';
 /**
@@ -17,7 +17,7 @@ import {HomePage} from '../home/home';
 })
 export class KnowThisLocalityPage {
   location:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     let location;
     if(navParams.get('location')){
       location = navParams.get('location');

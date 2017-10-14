@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
+import { AddContactsPage} from '../add-contacts/add-contacts';
 /**
  * Generated class for the LocationPage page.
  *
@@ -18,7 +19,7 @@ import { HomePage } from '../home/home';
 export class LocationPage {
 
   selectedLocation: String;
-  locationChoices: { 'id': String, 'name': String }[];
+  locationChoices: { 'id': String, '__str__': String }[];
   loading: Loading;
   loading_var: Boolean = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private shesafeBackend: ShesafeBackendProvider) {
@@ -41,10 +42,10 @@ export class LocationPage {
     // this.navCtrl.push(HomePage)
   }
   locationSelected(location) {
-    this.selectedLocation = location.name;
-    this.storage.set('location', location.name);
+    this.selectedLocation = location.__str__;
+    this.storage.set('location', location.__str__);
     this.storage.set('location_id', location.id);
-    this.navCtrl.setRoot(HomePage, { 'location_id': location.id, 'location': location.name });
+    this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ });
   }
 
   showLoading() {
