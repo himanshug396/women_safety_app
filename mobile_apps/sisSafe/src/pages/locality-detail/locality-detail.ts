@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,AlertController } from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
-import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
+// import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
 /**
  * Generated class for the LocalityDetailPage page.
  *
