@@ -72,7 +72,7 @@ export class LocalityDetailPage {
     profileModal.present();
   }
   openMaps(){
-    const browser = this.iab.create('https://www.google.com/maps/?q=' + this.latitude + ',' + this.longitude,'_blank',{location:'no'}); 
+    const browser = this.iab.create('https://www.google.com/maps/?q=' + this.latitude + ',' + this.longitude,'_blank'); 
   }
 
   showLoading() {
