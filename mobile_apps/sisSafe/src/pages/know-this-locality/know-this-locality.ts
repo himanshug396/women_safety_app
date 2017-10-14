@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 // import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 // import { Storage } from '@ionic/storage';
+import { LocationPage } from '../location/location';
 import { LocalityDetailPage } from '../locality-detail/locality-detail';
 import { HomePage } from '../home/home';
 /**
@@ -18,6 +19,7 @@ import { HomePage } from '../home/home';
 export class KnowThisLocalityPage {
   location: any;
   areas:any=[];
+  loading:Loading;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
               private alertCtrl: AlertController, private loadingCtrl: LoadingController) {
     let location;
@@ -62,6 +64,27 @@ export class KnowThisLocalityPage {
       'crowded' :crowded,
       'name':name
     });
+  }
+  locationpage(){
+    this.navCtrl.push(LocationPage);
+  }
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  showError(text) {
+    this.loading.dismiss();
+
+    let alert = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present(prompt);
   }
 
 }

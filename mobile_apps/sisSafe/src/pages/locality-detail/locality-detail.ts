@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,AlertController ,ModalController} from 'ionic-angular';
+import { NavController, NavParams,AlertController ,ModalController,Loading,LoadingController} from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { AddReviewPage} from '../add-review/add-review';
 import { MapsPage} from '../maps/maps';
@@ -18,7 +18,9 @@ import { MapsPage} from '../maps/maps';
 export class LocalityDetailPage {
   area_id;name;latitude;longitude;well_lit;transport;crowded;
   reviews:any;
+  loading:Loading;
   constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,
+    private loadingCtrl:LoadingController,
     private shesafeBackend:ShesafeBackendProvider) {
   let area_id = navParams.get('id');
   let name = navParams.get('name');
@@ -34,13 +36,15 @@ export class LocalityDetailPage {
   this.crowded = crowded;
   this.name = name;
   this.area_id = area_id;
-
+  this.showLoading();
   this.shesafeBackend.listReview(this.area_id).subscribe(
     data => {
+      this.loading.dismiss();
       this.reviews = data;
       console.log(data)
     },
     err => {
+      this.loading.dismiss();
       console.error(err);
       let alert = this.alertCtrl.create({
         title: 'Fail',
@@ -74,4 +78,24 @@ export class LocalityDetailPage {
       'name':this.name
     })
   }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  showError(text) {
+    this.loading.dismiss();
+
+    let alert = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present(prompt);
+  }
+
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController,Loading,LoadingController} from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import {HomePage} from '../home/home';
 // import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
@@ -23,7 +23,8 @@ export class AddContactsPage {
   count:any = 0;
   val:any = 'SKIP';
   contacts;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private shesafeBackend:ShesafeBackendProvider) {
+  loading:Loading;
+  constructor(public navCtrl: NavController,private loadingCtrl: LoadingController, public navParams: NavParams,public alertCtrl: AlertController,private shesafeBackend:ShesafeBackendProvider) {
     let location;
     let location_id
     if(navParams.get('location'))
@@ -92,16 +93,21 @@ export class AddContactsPage {
             let contact = [];
             contact.push(data.number)
             console.log(contact);
+            this.showLoading();
             this.shesafeBackend.addContacts(contact).subscribe(
               data => {
                 console.log(data)
                 alert(data.message);
+                this.loading.dismiss();
+                this.showLoading();
                 this.shesafeBackend.listContacts().subscribe(
                   resp => {
                     this.contacts = resp;
+                    this.loading.dismiss();
                     console.log(resp)
                   },
                   err => {
+                    this.loading.dismiss();
                     console.error(err);
                     let alert = this.alertCtrl.create({
                       title: 'Fail',
@@ -114,6 +120,7 @@ export class AddContactsPage {
                 )
               },
               err => {
+                this.loading.dismiss();
                 console.error(err);
                 let alert = this.alertCtrl.create({
                   title: 'Fail',
@@ -130,5 +137,13 @@ export class AddContactsPage {
     });
     prompt.present();
   }
-  
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+ 
 }

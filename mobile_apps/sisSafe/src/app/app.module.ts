@@ -18,13 +18,13 @@ import { HomeNearbyPage } from '../pages/home-nearby/home-nearby';
 import { HomeNearbyMedicalPage } from '../pages/home-nearby-medical/home-nearby-medical';
 import { HomeNearbyStationPage } from '../pages/home-nearby-station/home-nearby-station';
 import { HomeNearbyTaxiPage} from '../pages/home-nearby-taxi/home-nearby-taxi';
-
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 import {KnowThisLocalityPage} from '../pages/know-this-locality/know-this-locality';
 import {NearestWhatPage} from '../pages/nearest-what/nearest-what';
 import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
-
+import {MapsLocalityPage} from '../pages/maps-locality/maps-locality';
 import { LocationPage } from '../pages/location/location';
 
 import { LocationsProvider } from '../providers/locations/locations';
@@ -79,7 +79,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ExpandableHeaderComponent,
     AddReviewPage,
     MapsPage,
-    TermsAndConditionsPage
+    TermsAndConditionsPage,
+    MapsLocalityPage
   ],
   imports: [
     BrowserModule,
@@ -116,7 +117,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ContactUsPage,
     AddReviewPage,
     MapsPage,
-    TermsAndConditionsPage
+    TermsAndConditionsPage,
+    MapsLocalityPage
   ],
   providers: [
     StatusBar,
@@ -132,7 +134,8 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     FilePath,
     Camera,
     Contacts,
-    ShesafeBackendProvider
+    ShesafeBackendProvider,
+    InAppBrowser
   ],
   exports: [
     LocalityDetailPage,

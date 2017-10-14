@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
-// import { HomePage } from '../home/home';
+import { HomePage } from '../home/home';
 import { AddContactsPage} from '../add-contacts/add-contacts';
 /**
  * Generated class for the LocationPage page.
@@ -54,7 +54,11 @@ export class LocationPage {
         this.contacts = data;
         console.log(data)
         this.loading.dismiss();
-        this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ ,'contacts':data});
+        if(data.length==0)
+          this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ ,'contacts':data});
+        else{
+          this.navCtrl.setRoot(HomePage, { 'location_id': location.id, 'location': location.__str__ });
+        }
       },
       err => {
         this.loading.dismiss();

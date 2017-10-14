@@ -20,7 +20,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class HomePage {
 
   lastImage: string = null;
-  
+  loading:Loading;
   location:string;
   lat:any;
   long:any;
@@ -122,14 +122,18 @@ export class HomePage {
             text: 'Send',
             handler: () => {
               console.log('Send clicked');
+              this.showLoading();
               this.shesafeBackend.alertContacts(this.location_link).subscribe(data => {
                 if (data.success) {
+                  this.loading.dismiss();
                   alert(data.message)
                 } else {
+                  this.loading.dismiss();
                   alert("Failed. Check your connection and try again.");
                 }
               },
                 error => {
+                  this.loading.dismiss();
                   alert("Some Error Occured. Please check your network and try again.");
                 });
             }
@@ -144,6 +148,7 @@ export class HomePage {
     }
   
   knowthislocality(){
+    this.showLoading();
     this.shesafeBackend.areaChoices(this.location_id).subscribe(
       data => {
         this.areaChoices = data;
@@ -156,6 +161,7 @@ export class HomePage {
       },
       err => {
         console.error(err);
+        this.loading.dismiss();
         let alert = this.alertCtrl.create({
           title: 'Fail',
           subTitle: 'Please check your connection and try again.',
@@ -180,7 +186,7 @@ export class HomePage {
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
       };
-  
+      
       this.camera.getPicture(cameraOptions).then((imageData) => {
         // imageData is either a base64 encoded string or a file URI
         // If it's base64:
@@ -194,4 +200,23 @@ export class HomePage {
       });
   }
   
-}
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
+  showError(text) {
+    this.loading.dismiss();
+
+    let alert = this.alertCtrl.create({
+      title: 'Fail',
+      subTitle: text,
+      buttons: ['OK']
+    });
+    alert.present(prompt);
+  }
+
+} 

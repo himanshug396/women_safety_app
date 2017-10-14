@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Loading,LoadingController } from 'ionic-angular';
 import { ShesafeBackendProvider} from '../../providers/shesafe-backend/shesafe-backend';
 
 /**
@@ -21,7 +21,8 @@ export class AddReviewPage {
   comment_val:string="";
   button_val:any='BACK';
   area_id;name;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private shesafeBackend:ShesafeBackendProvider) {
+  loading:Loading;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private shesafeBackend:ShesafeBackendProvider,private loadingCtrl:LoadingController) {
     let name = navParams.get('name');
     let area_id = navParams.get('area_id');
     this.name = name;
@@ -49,7 +50,9 @@ export class AddReviewPage {
   }
   done(){
     if(this.well_lit_val>0 && this.transport_val>0 && this.crowded_val>0){
+      this.showLoading();
       this.shesafeBackend.addReview(this.area_id,this.well_lit_val,this.transport_val,this.crowded_val,this.comment_val).subscribe(data => {
+        this.loading.dismiss();
         if (data.success) {
           alert(data.message);
           this.navCtrl.pop();
@@ -58,6 +61,7 @@ export class AddReviewPage {
         }
       },
       error => {
+        this.loading.dismiss();
         console.log(error)
         alert('Check your connection and try again.')
       });
@@ -66,4 +70,13 @@ export class AddReviewPage {
     this.navCtrl.pop();
   } 
 }
+
+showLoading() {
+  this.loading = this.loadingCtrl.create({
+    content: 'Please wait...',
+    dismissOnPageChange: true
+  });
+  this.loading.present();
+}
+
 }
