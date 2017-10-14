@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework import authentication, permissions, exceptions, generics
 from knox.models import AuthToken
 
-from .utils import phone_regex, otp_regex, send_otp, verify_otp
+from .utils import phone_regex, otp_regex, send_otp, verify_otp, send_sms
 from .models import *
 from .serializers import *
 
@@ -89,7 +89,67 @@ class VerifyOTP(APIView):
 class CheckLoginState(APIView):
     def post(self, request):
         return Response({"success":True})
- 
+
+class AddContacts(APIView):
+    def post(self, request):
+        try:
+            user = self.request.user
+            contacts = request.data.get("contacts")
+            print (contacts)
+            for phone in contacts:
+                """
+                if not phone_regex.regex.match(phone):
+                    raise exceptions.ParseError({
+                        "success":False,
+             	        "message" : "Phone number format not valid",
+                    })
+                """
+                user_contact, created = UserContact.objects.get_or_create(user=user, phone=phone)
+            return Response({
+                "success":True,
+                "message":"Contacts saved successfully"
+            })
+        except Exception as e:
+            raise exceptions.ParseError({"success": False, "message":str(e)})
+
+class ListContacts(generics.ListAPIView):
+    serializer_class = UserContactSerializer
+    def get_queryset(self):
+        try:
+            user = self.request.user
+            return UserContact.objects.filter(user=user, active=True) 
+        except Exception as e:
+            raise exceptions.ParseError({"success":False, "message":str(e)})
+
+class AlertContacts(APIView):
+    def post(self, request):
+        try:
+            user_contacts = UserContact.objects.filter(self.request.user)
+            location_sms = "Hey, I need help " + request.data.get("location", "")
+            for contact in user_contacts:
+                send_sms(contact.phone, location_sms)
+            return Response({
+                "success": True,
+                "message": "Messages sent successfully"
+            })   
+        except Exception as e:
+            raise exceptions.ParseError({"success": False, "message":str(e)})
+
+class SendImage(APIView):
+    def post(self, request):
+        try:
+            user_contacts = UserContact.objects.filter(self.request.user)
+            link = request.data.get("link", "")
+            image_sms = "Hey, I need help "+ link
+            for contact in user_contacts:
+                send_sms(contact.phone, image_sms)
+            return Response({
+                "success": True,
+                "message": "Image link sent successfully"
+            })   
+        except Exception as e:
+            raise exceptions.ParseError({"success": False, "message":str(e)})
+
 class ListCities(generics.ListAPIView):
     queryset = City.objects.filter(active=True)
     serializer_class = CitySerializer
