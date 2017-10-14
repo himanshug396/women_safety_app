@@ -1,3 +1,76 @@
-page-locality-detail {
 
+.ios, .md {
+    page-locality-detail {
+
+           ion-item {
+               width: 92%;
+               margin: 4%;
+               padding-left: 10px !important;
+               margin-bottom: 10px;
+               background-color: inherit;
+               opacity: 0.75;
+               font-size: 0.9em;
+               transition: 0.2s ease-in-out;
+               overflow: hidden;
+           }
+    
+       }
+    
+   }
+.exp-head-locality{
+    color:white;
+    font-weight: 500;
+    font-size: 1.5em;
 }
+.exp-head-locality span ion-icon{
+    padding:5% auto 0% 10%;
+}
+    
+.exp-head-locality div {
+    padding:0.75em;
+    padding-left:1.5em;
+    padding-bottom: 0;
+}
+.mapbutton_locality{
+    z-index: 100000;
+    position: absolute;
+    top:3em;
+    float:right;
+    right:1em;
+    background-color: #ffc61a
+    ;
+}
+.backbutton{
+    padding:1em;
+    padding-bottom: 0;
+    font-size:1.2em;
+    color:white;
+    font-weight: 500;
+}
+.text_details{
+    font-size:1.3em;
+    margin-top:1.5em;
+
+    text-align: justify
+}
+.arrow-back-locality{
+    padding-right:1em;
+    font-size:1.3em;
+}
+
+.img_rating{
+    height: 4em;
+    width: 4em;
+}
+.rating_value{
+    position: absolute;
+    left:41%;
+    top:23%;
+    font-size: 1.1em;
+    font-weight: bold;
+    color:white
+}
+.user_reviews {}
+.user_reviews ion-label{
+  white-space: normal; 
+}   

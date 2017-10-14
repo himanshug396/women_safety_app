@@ -19,8 +19,6 @@ import { HomeNearbyMedicalPage } from '../pages/home-nearby-medical/home-nearby-
 import { HomeNearbyStationPage } from '../pages/home-nearby-station/home-nearby-station';
 import { HomeNearbyTaxiPage} from '../pages/home-nearby-taxi/home-nearby-taxi';
 
-import {AlertButtonPage} from '../pages/alert-button/alert-button';
-import {DangerButtonPage} from '../pages/danger-button/danger-button';
 import {KnowThisLocalityPage} from '../pages/know-this-locality/know-this-locality';
 import {NearestWhatPage} from '../pages/nearest-what/nearest-what';
 import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
@@ -31,7 +29,6 @@ import { LocationPage } from '../pages/location/location';
 
 import { LocationsProvider } from '../providers/locations/locations';
 import { ClickUploadPage } from '../pages/click-upload/click-upload';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { LoginPage} from '../pages/login/login';
 import { VerifyOtpPage} from '../pages/verify-otp/verify-otp';
 import {AddContactsPage} from '../pages/add-contacts/add-contacts';
@@ -50,6 +47,9 @@ import { Contacts} from '@ionic-native/contacts';
 import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
 import { NetworkErrorPage} from '../pages/network-error/network-error';
 import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-backend';
+import { ContactUsPage} from '../pages/contact-us/contact-us';
+
+import { ExpandableHeaderComponent } from '../components/expandable-header/expandable-header';
 @NgModule({
   declarations: [
     MyApp,
@@ -57,12 +57,9 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     HomeNearbyPage,
     MapsNearbyPage,
     ListNearbyPage,
-    AlertButtonPage,
-    DangerButtonPage,
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    TutorialPage,
     LoginPage,
     VerifyOtpPage,
     AddContactsPage,
@@ -78,7 +75,9 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     HomePopOverPage,
     ClickUploadPage,
     NetworkErrorPage,
-    LocationPage
+    LocationPage,
+    ContactUsPage,
+    ExpandableHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -93,12 +92,9 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     HomeNearbyPage,
     MapsNearbyPage,
     ListNearbyPage,
-    AlertButtonPage,
-    DangerButtonPage,
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    TutorialPage,
     LoginPage,
     VerifyOtpPage,
     AddContactsPage,
@@ -114,7 +110,8 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     HomePopOverPage,
     ClickUploadPage,
     NetworkErrorPage,
-    LocationPage
+    LocationPage,
+    ContactUsPage,
   ],
   providers: [
     StatusBar,
@@ -131,6 +128,10 @@ import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-back
     Camera,
     Contacts,
     ShesafeBackendProvider
-  ]
+  ],
+  exports: [
+    LocalityDetailPage,
+    ExpandableHeaderComponent
+    ]
 })
 export class AppModule {}

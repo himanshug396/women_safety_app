@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController, Platform, NavParams} from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, Platform, PopoverController} from 'ionic-angular';
+import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { NearestWhatPage} from '../nearest-what/nearest-what';
-import {AlertButtonPage} from '../alert-button/alert-button';
-import {DangerButtonPage} from '../danger-button/danger-button';
 import {KnowThisLocalityPage} from '../know-this-locality/know-this-locality';
 import { ClickUploadPage } from '../click-upload/click-upload';
 import {LoginPage} from '../login/login';
 import { AddContactsPage} from '../add-contacts/add-contacts';
 import { HomePopOverPage} from '../home-pop-over/home-pop-over';
-
-import { Geolocation } from '@ionic-native/geolocation';
+import { Storage} from '@ionic/storage';
 import { LocationPage} from '../location/location';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
+
+import { Geolocation } from '@ionic-native/geolocation';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -22,40 +21,53 @@ export class HomePage {
 
   lastImage: string = null;
   
-  location:string = 'Select Location';
+  location:string;
   lat:any;
   long:any;
   captureDataUrl: string;
   rootParams:any[];
   location_id;
-  constructor(public navParams:NavParams,public navCtrl: NavController, public popoverCtrl:PopoverController,private geolocation: Geolocation,public platform: Platform,
-    private camera: Camera) {
+  areaChoices:any=[];
+  location_link:any;
+  
+  constructor(public navParams:NavParams,
+              public navCtrl: NavController, 
+              public popoverCtrl:PopoverController,
+              private storage: Storage,
+              public platform: Platform,
+              private alertCtrl: AlertController, private loadingCtrl: LoadingController, 
+              private shesafeBackend: ShesafeBackendProvider,
+              private camera: Camera,
+              private geolocation: Geolocation) {
       let location;
       let rootParams = [];
-      
-      this.rootParams = rootParams;
-      if(navParams.get('location')){
-        location = navParams.get('location');
-      }
-      else{
-        location = (navCtrl as any).rootParams['location'];
-      }
-      
       let location_id;
-      if(navParams.get('location_id')){
+      this.rootParams = rootParams;
+      if(navParams.get('location_id')){ 
+        location = navParams.get('location');  
         location_id = navParams.get('location_id');
-      }else{
-        location_id = (navCtrl as any).rootParams['location_id'];
       }
-  
-      console.log(12345);
-      console.log(location);
-      console.log(location_id);
+      // else if((navCtrl as any).rootParams['location']){
+      //   location = (navCtrl as any).rootParams['location'];
+      //   location_id = (navCtrl as any).rootParams['location_id'];
+      // }
+      else(
+        this.storage.get('location_id').then((location_id)=>{
+        this.location_id = location_id;
+        return this.storage.get('location');
+      }).then((location)=>{
+        this.location = location;
+      }).catch(()=>{
+            if(!location_id){
+              this.navCtrl.push(LocationPage);
+          }
+      })
+    )
+      console.log(this.location);
+      console.log(this.location_id);
       this.location = location;
       this.location_id = location_id;
-      if(!location_id){
-          this.navCtrl.push(LocationPage);
-      }
+      console.log(12345);
       const config = {
         apiKey: "AIzaSyA7rRR0AuyFE8avuHgZkFWW7THWkO2UzWk",
         authDomain: "shesafe-1507014992380.firebaseapp.com",
@@ -90,19 +102,59 @@ export class HomePage {
   nearbyPlaces(){
     this.navCtrl.push(NearestWhatPage);
   }
-  dangerbutton(){
-    this.navCtrl.push(DangerButtonPage);
 
-  }
-  alertbutton(){
-    this.navCtrl.push(AlertButtonPage);
+  sendAlert(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.lat=  resp.coords.latitude;
+      this.long = resp.coords.longitude;
+      this.location_link = 'https://www.google.com/maps/?q=' + this.lat + ',' + this.long;
+      let confirm = this.alertCtrl.create({
+        title: 'Send Message?',
+        message: 'I am in a trouble. Please track me or stay in contact.' +  '<br>' +' My location : ' + '<a>' + this.location_link + '</a>',
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Send',
+            handler: () => {
+              console.log('Send clicked');
+            }
+          }
+        ]
+      });
+      confirm.present();
     
-  }
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+    }
+  
   knowthislocality(){
-    this.navCtrl.push(KnowThisLocalityPage,{
-      'location':this.location,
-      'location_id':this.location_id
-    });
+    this.shesafeBackend.areaChoices(this.location_id).subscribe(
+      data => {
+        this.areaChoices = data;
+        console.log(data)
+        this.navCtrl.push(KnowThisLocalityPage,{
+          'location':this.location,
+          'location_id':this.location_id,
+          'areas':this.areaChoices
+        });
+      },
+      err => {
+        console.error(err);
+        let alert = this.alertCtrl.create({
+          title: 'Fail',
+          subTitle: 'Please check your connection and try again.',
+          buttons: ['OK']
+        });
+        alert.present(prompt);
+
+      }
+    )
   }
   login(){
     this.navCtrl.push(LoginPage);

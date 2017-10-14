@@ -95,5 +95,21 @@ export class ShesafeBackendProvider {
       headers:this.headers
     }).map(response=>response.json())
   }
+  public areaChoices(location_id){
+    return this.http.get(this.baseUrl+'/api/listAreas/?city_id=' + location_id,{
+      headers:this.headers
+    }).map(response=>response.json())
+  }
+
+  public contact(email,subject,message){
+    return this.http.post(this.baseUrl+'/api/contact/',{
+      'email':email,
+      'subject':subject,
+      'message':message,
+    },{
+      headers:this.headers
+    }).map(response=>response.json());
+  }
+  
 
 }

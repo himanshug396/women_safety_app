@@ -22,6 +22,8 @@ export class LocationPage {
   locationChoices: { 'id': String, '__str__': String }[];
   loading: Loading;
   loading_var: Boolean = false;
+  location_id;
+  rootParams:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private shesafeBackend: ShesafeBackendProvider) {
     this.shesafeBackend.locationChoices().subscribe(
       data => {

@@ -4,25 +4,86 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header style="background-color: #4c9d59;;">
 
-  <ion-navbar>
-    <ion-title>localityDetail</ion-title>
-  </ion-navbar>
-
+  <expandable-header [scrollArea]="mycontent" headerHeight="150" class="exp-head-locality" style="background-image:url('assets/images/maps.png');height:100%;background-size:cover">
+   </expandable-header>
+   <!-- <div class='backbutton'>
+    
+      <span class='arrow-back-locality'><ion-icon name="arrow-back"></ion-icon></span>
+      <span class='text_details'>Chandigarh Group of Colleges CCET</span>
+   </div> -->
+  <ion-grid style='color:white;font-weight:bold'>
+    <ion-row>
+      <ion-col col-1 style='padding-top:1.8em;padding-left:1em;' (tap)='back()'>
+          <span class='arrow-back-locality'><ion-icon name="arrow-back"></ion-icon></span>
+      </ion-col>
+      <ion-col col-11 style='padding:1em;padding-left:1em;'>
+          <span class='text_details'>Chandigarh Group of Ckjd gadsk CCET</span>
+          <button ion-fab class='mapbutton_locality'>
+            <ion-icon name="pin" style='color:#fff'></ion-icon>
+          </button>
+  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-header>
 
 
-<ion-content padding>
-    <ion-fab bottom right style="bottom:2em;right:2em;">
-      <button ion-fab>
-        <ion-icon name="pin"></ion-icon>
-      </button>
-    </ion-fab>
-    <p>Point 1</p>
+<ion-content fullscreen #mycontent>
 
-    <p>Point 1</p>
-    <p>Point 1</p>
-    <p>Point 1</p>
-    <p>Point 1</p>
-</ion-content>
+  <ion-fab bottom right style="bottom:2em;right:1em;">
+    <button ion-fab style="background-color:#f7a430">
+      <ion-icon name="star"></ion-icon>
+    </button>
+  </ion-fab>
+  <br><br>
+  <hr>
+  <h5 style="text-align:center;color:#414141">Ratings</h5>
+  <ion-grid style='text-align:center;color:#4c9d59;font-size:1em'>
+    <ion-row style="min-height:3em">
+      <ion-col col-4 >
+        <img src="assets/images/rating.png" class="img_rating">
+        <span class='rating_value'>4.5</span>
+        <p>Crowd</p>
+      </ion-col>
+      <ion-col col-4 >
+        <img src="assets/images/rating.png" class="img_rating">
+        <span  class='rating_value'>4.2</span>
+        <p>Transport</p>
+      </ion-col>
+      <ion-col col-4> 
+        <img src="assets/images/rating.png" class="img_rating">
+        <span  class='rating_value'>4.5</span>
+        <p>Well Lit</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr>
+  <h6 style='text-align:center'>User Reviews</h6>
+
+  <ion-list class="user_reviews">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="assets/images/user2.png">
+        </ion-avatar>
+        <h2>Himanshu Gupta</h2>
+        <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
+      </ion-item>
+      <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/images/user2.png">
+          </ion-avatar>
+          <h2>Himanshu Gupta</h2>
+          <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
+        </ion-item>
+        <ion-item>
+            <ion-avatar item-start>
+              <img src="assets/images/user2.png">
+            </ion-avatar>
+            <h2>Himanshu Gupta</h2>
+            <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
+          </ion-item>
+  </ion-list>
+  </ion-content>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
 /**
  * Generated class for the LocalityDetailPage page.
  *
@@ -20,5 +20,7 @@ export class LocalityDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LocalityDetailPage');
   }
-
+  back(){
+    this.navCtrl.pop();
+  }
 }

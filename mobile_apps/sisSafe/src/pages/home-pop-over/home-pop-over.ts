@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
 import { AddContactsPage} from '../add-contacts/add-contacts';
 import { LoginPage} from '../login/login';
+import { ContactUsPage} from '../contact-us/contact-us';
 /**
  * Generated class for the HomePopOverPage page.
  *
@@ -40,7 +41,7 @@ export class HomePopOverPage {
     // });
   }
   openContactUs(){
-    // this.navCtrl.push(ContactUsPage);
+    this.navCtrl.push(ContactUsPage);
   }
   openTermsConditions(){
     // this.navCtrl.push(TermsAndConditionsPage);
