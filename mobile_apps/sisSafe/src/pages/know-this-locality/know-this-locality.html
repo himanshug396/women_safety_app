@@ -20,24 +20,31 @@
 </ion-header>
 
 
-<ion-content>
-  <ion-searchbar placeholder="Search some place." id="knowthislocality_search"></ion-searchbar>
-    <ion-item-group *ngFor="let area of areas">
-    <ion-item (tap)="openlocalityDetial(area.latitude,area.longitude,area.well_lit,area.transport,area.crowded)">
-      <h2 style='word-wrap:break-word'>{{area.__str__}}</h2>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div>{{area.well_lit}}</div>
-            <div>Well Lightened</div>
+<ion-content style="
+background-color: rgba(248,208,217,0.1);">
+  <br>
+  <ion-item-group *ngFor="let area of areas">
+    <ion-item (tap)="openlocalityDetial(area.id,area.__str__,area.latitude,area.longitude,area.well_lit,area.transport,area.crowded)" style="border-bottom:1px solid #d8d8d8">
+      <h2 style='word-wrap:break-word;white-space: normal;font-size:1.2em;color:#111;text-decoration:underline'>{{area.__str__}}</h2>
+      <ion-grid style='text-align:center;color:#4c9d59;font-size:1em'>
+        <ion-row style="min-height:3em">
+          <ion-col col-4 style='border-right:0.5px solid #efefef'>
+            <!-- <img src="assets/images/rating.png" class="img_rating_listpage"> -->
+            <br>
+            <span class='rating_value_listpage'>{{area.well_lit}}</span>
+            <p style="white-space: normal;color:#414141;margin-top:10px;font-size:0.7em">Well Lightened</p>
           </ion-col>
-          <ion-col col4>
-            <div>{{area.transport}}</div>
-            <div>Public Transport</div>
+          <ion-col col-4 style='border-right:0.5px solid #efefef'>
+            <!-- <img src="assets/images/rating.png" class="img_rating_listpage"> -->
+            <br>
+            <span class='rating_value_listpage'>{{area.transport}}</span>
+            <p style="white-space: normal;color:#414141;margin-top:10px;font-size:0.7em">Public Transport</p>
           </ion-col>
-          <ion-col col4>
-            <div>{{area.crowded}}</div>
-            <div>Area Crowd</div>
+          <ion-col col-4 style='border-right:0.5px solid #efefef'>
+            <!-- <img src="assets/images/rating.png" class="img_rating_listpage"> -->
+            <br>
+            <span class='rating_value_listpage'>{{area.crowded}}</span>
+            <p style="white-space: normal;color:#414141;margin-top:10px;font-size:0.7em">Area Crowd</p>
           </ion-col>
         </ion-row>
       </ion-grid>

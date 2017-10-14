@@ -15,11 +15,11 @@
    </div> -->
   <ion-grid style='color:white;font-weight:bold'>
     <ion-row>
-      <ion-col col-1 style='padding-top:1.8em;padding-left:1em;' (tap)='back()'>
+      <ion-col col-1 style='padding-top:4%;padding-left:1em;' (tap)='back()'>
           <span class='arrow-back-locality'><ion-icon name="arrow-back"></ion-icon></span>
       </ion-col>
       <ion-col col-11 style='padding:1em;padding-left:1em;'>
-          <span class='text_details'>Chandigarh Group of Ckjd gadsk CCET</span>
+          <span class='text_details'>{{name}}</span>
           <button ion-fab class='mapbutton_locality'>
             <ion-icon name="pin" style='color:#fff'></ion-icon>
           </button>
@@ -44,18 +44,18 @@
     <ion-row style="min-height:3em">
       <ion-col col-4 >
         <img src="assets/images/rating.png" class="img_rating">
-        <span class='rating_value'>4.5</span>
-        <p>Crowd</p>
+        <span class='rating_value'>{{well_lit}}</span>
+        <p>Well Lightened</p>
       </ion-col>
       <ion-col col-4 >
         <img src="assets/images/rating.png" class="img_rating">
-        <span  class='rating_value'>4.2</span>
-        <p>Transport</p>
+        <span  class='rating_value'>{{transport}}</span>
+        <p>Public Transport</p>
       </ion-col>
       <ion-col col-4> 
         <img src="assets/images/rating.png" class="img_rating">
-        <span  class='rating_value'>4.5</span>
-        <p>Well Lit</p>
+        <span  class='rating_value'>{{crowded}}</span>
+        <p>Area Crowd</p>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -63,27 +63,14 @@
   <hr>
   <h6 style='text-align:center'>User Reviews</h6>
 
-  <ion-list class="user_reviews">
-      <ion-item>
+  <ion-list class="user_reviews"> 
+      <ion-item  *ngFor="let review of reviews">
         <ion-avatar item-start>
           <img src="assets/images/user2.png">
         </ion-avatar>
-        <h2>Himanshu Gupta</h2>
-        <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
+        <h2>{{review.user.name}}</h2>
+        <p style="overflow:visible;word-wrap:break-word">{{review.comment}}</p>
       </ion-item>
-      <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/images/user2.png">
-          </ion-avatar>
-          <h2>Himanshu Gupta</h2>
-          <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
-        </ion-item>
-        <ion-item>
-            <ion-avatar item-start>
-              <img src="assets/images/user2.png">
-            </ion-avatar>
-            <h2>Himanshu Gupta</h2>
-            <p style="overflow:visible;word-wrap:break-word">Ugsaefkjsgsfkgn asdufgks gasldiugs adfsufb lksjdg skgjnasg asguba gasldugba gas,ugkbag  if.</p>
-          </ion-item>
   </ion-list>
+  <br><br>
   </ion-content>

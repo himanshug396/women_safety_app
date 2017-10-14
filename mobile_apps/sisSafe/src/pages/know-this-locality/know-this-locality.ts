@@ -53,8 +53,16 @@ export class KnowThisLocalityPage {
   backToHome() {
     this.navCtrl.pop();
   }
-  openlocalityDetial() {
-    this.navCtrl.push(LocalityDetailPage);
+  openlocalityDetial(id,name,latitude,longitude,well_lit,transport,crowded) {
+    this.navCtrl.push(LocalityDetailPage,{
+      'id' :id,
+      'latitude': latitude,
+      'longitude': longitude,
+      'well_lit':well_lit,
+      'transport' : transport,
+      'crowded' :crowded,
+      'name':name
+    });
   }
 
 }

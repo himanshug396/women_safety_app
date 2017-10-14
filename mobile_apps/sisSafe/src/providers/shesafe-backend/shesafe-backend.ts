@@ -100,6 +100,11 @@ export class ShesafeBackendProvider {
       headers:this.headers
     }).map(response=>response.json())
   }
+  public listReview(id){
+    return this.http.get(this.baseUrl+'/api/listReviews/?area_id=' + id,{
+      headers:this.headers
+    }).map(response=>response.json())
+  }
 
   public contact(email,subject,message){
     return this.http.post(this.baseUrl+'/api/contact/',{
