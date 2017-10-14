@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import {Storage} from '@ionic/storage';
+import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { AddContactsPage} from '../add-contacts/add-contacts';
 import { LoginPage} from '../login/login';
 import {TermsAndConditionsPage} from '../terms-and-conditions/terms-and-conditions';
@@ -18,8 +19,8 @@ import { ContactUsPage} from '../contact-us/contact-us';
   templateUrl: 'home-pop-over.html',
 })
 export class HomePopOverPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
+  contacts;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private shesafeBackend:ShesafeBackendProvider,private alertCtrl:AlertController) {
   }
 
   ionViewDidLoad() {
@@ -38,7 +39,25 @@ export class HomePopOverPage {
     this.navCtrl.push(TermsAndConditionsPage);
   }
   addContacts(){
-    this.navCtrl.push(AddContactsPage)
+    this.shesafeBackend.listContacts().subscribe(
+      data => {
+        this.contacts = data;
+        console.log(data)
+        this.navCtrl.push(AddContactsPage,{
+          'contacts':data
+        })
+      },
+      err => {
+        console.error(err);
+        let alert = this.alertCtrl.create({
+          title: 'Fail',
+          subTitle: 'Error while getting location.Please check your connection and try again.',
+          buttons: ['OK']
+        });
+        alert.present(prompt);
+
+      }
+    )
   }
   
 }

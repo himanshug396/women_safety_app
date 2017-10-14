@@ -24,6 +24,7 @@ export class LocationPage {
   loading_var: Boolean = false;
   location_id;
   rootParams:any;
+  contacts;
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private loadingCtrl: LoadingController, private storage: Storage, private shesafeBackend: ShesafeBackendProvider) {
     this.shesafeBackend.locationChoices().subscribe(
       data => {
@@ -47,7 +48,24 @@ export class LocationPage {
     this.selectedLocation = location.__str__;
     this.storage.set('location', location.__str__);
     this.storage.set('location_id', location.id);
-    this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ });
+    this.shesafeBackend.listContacts().subscribe(
+      data => {
+        this.contacts = data;
+        console.log(data)
+        this.navCtrl.setRoot(AddContactsPage, { 'location_id': location.id, 'location': location.__str__ ,'contacts':data});
+    
+      },
+      err => {
+        console.error(err);
+        let alert = this.alertCtrl.create({
+          title: 'Fail',
+          subTitle: 'Some Error Occured.Please check your connection and try again.',
+          buttons: ['OK']
+        });
+        alert.present(prompt);
+
+      }
+    )
   }
 
   showLoading() {

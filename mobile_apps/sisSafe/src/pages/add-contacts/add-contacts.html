@@ -24,16 +24,16 @@
   </ion-fab>
       
   <ion-list>
-    <ion-item-sliding style="border-bottom:0.5px solid #ddd">
+    <ion-item-sliding style="border-bottom:0.5px solid #ddd" *ngFor="let contact of contacts">
       <ion-item>
-        <h2>Himanshu<span style="float:right;">(+91-9569191889)</span></h2>
+        <h2>{{contact.phone}}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button style="background-color:#CACA00">
           <ion-icon name="text"></ion-icon>
           Text
         </button>
-        <button ion-button color="secondary">
+        <button ion-button style="background-color:green">
           <ion-icon name="call"></ion-icon>
           Call
         </button>

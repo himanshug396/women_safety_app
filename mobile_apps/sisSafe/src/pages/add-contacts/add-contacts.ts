@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController} from 'ionic-angular';
+import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import {HomePage} from '../home/home';
 // import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
 
@@ -22,7 +23,8 @@ export class AddContactsPage {
   location_id:any;
   count:any = 0;
   val:any = 'SKIP';
-  constructor(public navCtrl: NavController, public navParams: NavParams,) {
+  contacts;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController,private shesafeBackend:ShesafeBackendProvider) {
     let location;
     let location_id
     if(navParams.get('location'))
@@ -35,6 +37,13 @@ export class AddContactsPage {
     console.log(location, location_id)
     if(this.count!=0)
       this.val = 'Go To Home';
+    let contacts;
+    if(navParams.get('contacts'))
+      contacts = navParams.get('contacts');
+    
+    this.contacts = contacts;
+    if(this.contacts.length !=0 )
+      this.val = 'BACK'
     // this.storage.get('location_id').then((location_id)=>{
       //   this.location_id = location_id;
       //   return this.storage.get('location');
@@ -57,6 +66,70 @@ export class AddContactsPage {
     });
   }
   addcontact(){
-    this.navCtrl.push(AddContacts2Page)
+    let prompt = this.alertCtrl.create({
+      title: 'Add Contact',
+      message: "Enter the mobile number of the contact",
+      inputs: [
+        {
+          name:'number',
+          placeholder: '9999999999',
+          min:10,
+          max:10,
+          type:'tel'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved clicked');
+            console.log(data)
+            let contact = [];
+            contact.push(data.number)
+            console.log(contact);
+            this.shesafeBackend.addContacts(contact).subscribe(
+              data => {
+                console.log(data)
+                alert(data.message);
+                this.shesafeBackend.listContacts().subscribe(
+                  resp => {
+                    this.contacts = resp;
+                    console.log(resp)
+                  },
+                  err => {
+                    console.error(err);
+                    let alert = this.alertCtrl.create({
+                      title: 'Fail',
+                      subTitle: 'Please check your connection and try again.',
+                      buttons: ['OK']
+                    });
+                    alert.present(prompt);
+            
+                  }
+                )
+              },
+              err => {
+                console.error(err);
+                let alert = this.alertCtrl.create({
+                  title: 'Fail',
+                  subTitle: 'Some Error occured. Please check your connection and try again.',
+                  buttons: ['OK']
+                });
+                alert.present(prompt);
+        
+              }
+            )
+          }
+        } 
+      ]
+    });
+    prompt.present();
   }
+  
 }
