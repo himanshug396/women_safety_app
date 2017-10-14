@@ -20,7 +20,7 @@
       </ion-col>
       <ion-col col-11 style='padding:1em;padding-left:1em;'>
           <span class='text_details'>{{name}}</span>
-          <button ion-fab class='mapbutton_locality'>
+          <button ion-fab class='mapbutton_locality' (tap)="openMaps()">
             <ion-icon name="pin" style='color:#fff'></ion-icon>
           </button>
   
@@ -32,7 +32,7 @@
 
 <ion-content fullscreen #mycontent>
 
-  <ion-fab bottom right style="bottom:2em;right:1em;">
+  <ion-fab bottom right style="bottom:2em;right:1em;" (tap)='addreview()'>
     <button ion-fab style="background-color:#f7a430">
       <ion-icon name="star"></ion-icon>
     </button>

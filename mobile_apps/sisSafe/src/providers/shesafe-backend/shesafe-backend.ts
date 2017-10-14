@@ -105,7 +105,32 @@ export class ShesafeBackendProvider {
       headers:this.headers
     }).map(response=>response.json())
   }
+  public listContacts(){
+    return this.http.get(this.baseUrl+'/api/listContacts/',{
+      headers:this.headers
+    }).map(response=>response.json())
+  }
 
+  public addContacts(contacts){
+    return this.http.post(this.baseUrl+'/api/addContacts/',{
+      'contacts':contacts,
+    },{
+      headers:this.headers
+    }).map(response=>response.json());
+  }
+  
+  public addReview(area_id,well_lit,transport,crowded,comment){
+    return this.http.post(this.baseUrl+'/api/addReview/',{
+      'area_id':area_id,
+      'well_lit':well_lit,
+      'transport':transport,
+      'crowded':crowded,
+      'comment':comment,
+    },{
+      headers:this.headers
+    }).map(response=>response.json());
+  }
+  
   public contact(email,subject,message){
     return this.http.post(this.baseUrl+'/api/contact/',{
       'email':email,

@@ -1,0 +1,75 @@
+<!--
+  Generated template for the AddReviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add your Review</ion-title>
+    <ion-buttons end>
+        <button ion-button (tap)="done()">{{button_val}}</button>
+    </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h4 style="color:#414141;text-align:center">RATE - "{{name}}"</h4>
+  <h6 style="color:#414141;text-align:center;font-size:0.8em;">(Your review would help others to take appropriate decisions)</h6>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+          <p class='text_head'>Area Crowd</p>
+      </ion-col>
+      <ion-col col-8>
+          <rating [(ngModel)]="crowded_val" 
+          readOnly="false"
+          max="5" 
+          emptyStarIconName="star-outline" 
+          halfStarIconName="star-half" 
+          starIconName="star" 
+          nullable="false" 
+          (ngModelChange)="crowded($event)"></rating>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-4>
+          <p class='text_head'>Lightened?</p>
+        </ion-col>
+        <ion-col col-8>
+          <rating [(ngModel)]="well_lit_val" 
+          readOnly="false"
+          max="5" 
+          emptyStarIconName="star-outline" 
+          halfStarIconName="star-half" 
+          starIconName="star" 
+          nullable="false" 
+          (ngModelChange)="well_lit($event)"></rating>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-4>
+          <p class='text_head'>Public Transport</p>
+        </ion-col>
+        <ion-col col-8>
+          <rating [(ngModel)]="transport_val" 
+          readOnly="false" 
+          max="5" 
+          emptyStarIconName="star-outline" 
+          halfStarIconName="star-half" 
+          starIconName="star" 
+          nullable="false" 
+          (ngModelChange)="transport($event)"></rating>
+        </ion-col>
+      </ion-row>
+  </ion-grid>  
+  <br>
+  <h4 style="color:#414141;text-align:center">Give your Review/comment here.</h4>
+  <textarea name="review" id="review" rows="10" class='text-area-review' [(ngModel)]="comment_val" (ngModelChange)="comment($event)"></textarea>
+
+</ion-content>

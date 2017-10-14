@@ -37,7 +37,7 @@ import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { HttpModule } from '@angular/http';
-
+import {MapsPage} from '../pages/maps/maps';
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
@@ -48,8 +48,9 @@ import { HomePopOverPage} from '../pages/home-pop-over/home-pop-over';
 import { NetworkErrorPage} from '../pages/network-error/network-error';
 import { ShesafeBackendProvider} from '../providers/shesafe-backend/shesafe-backend';
 import { ContactUsPage} from '../pages/contact-us/contact-us';
-
+import { AddReviewPage  } from '../pages/add-review/add-review';
 import { ExpandableHeaderComponent } from '../components/expandable-header/expandable-header';
+import { Ionic2RatingModule } from 'ionic2-rating';
 @NgModule({
   declarations: [
     MyApp,
@@ -77,13 +78,16 @@ import { ExpandableHeaderComponent } from '../components/expandable-header/expan
     NetworkErrorPage,
     LocationPage,
     ContactUsPage,
-    ExpandableHeaderComponent
+    ExpandableHeaderComponent,
+    AddReviewPage,
+    MapsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -112,6 +116,8 @@ import { ExpandableHeaderComponent } from '../components/expandable-header/expan
     NetworkErrorPage,
     LocationPage,
     ContactUsPage,
+    AddReviewPage,
+    MapsPage
   ],
   providers: [
     StatusBar,

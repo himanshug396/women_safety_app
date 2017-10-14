@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,AlertController } from 'ionic-angular';
+import { NavController, NavParams,AlertController ,ModalController} from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
+import { AddReviewPage} from '../add-review/add-review';
+import { MapsPage} from '../maps/maps';
 // import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
 /**
  * Generated class for the LocalityDetailPage page.
@@ -16,9 +18,9 @@ import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-
 export class LocalityDetailPage {
   area_id;name;latitude;longitude;well_lit;transport;crowded;
   reviews:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,private shesafeBackend:ShesafeBackendProvider) {
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,
+    private shesafeBackend:ShesafeBackendProvider) {
   let area_id = navParams.get('id');
-    
   let name = navParams.get('name');
   let latitude = navParams.get('latitude');
   let longitude = navParams.get('longitude');
@@ -57,5 +59,19 @@ export class LocalityDetailPage {
   }
   back(){
     this.navCtrl.pop();
+  }
+  addreview(){
+    const profileModal = this.modalCtrl.create(AddReviewPage,{
+      'area_id':this.area_id,
+      'name':this.name
+    });
+    profileModal.present();
+  }
+  openMaps(){
+    this.navCtrl.push(MapsPage,{
+      'latitude':this.latitude,
+      'longitude':this.longitude,
+      'name':this.name
+    })
   }
 }
