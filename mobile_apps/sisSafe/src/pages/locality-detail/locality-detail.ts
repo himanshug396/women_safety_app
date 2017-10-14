@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams,AlertController ,ModalController,Loading,LoadingController} from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { AddReviewPage} from '../add-review/add-review';
-import { MapsPage} from '../maps/maps';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 // import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
 /**
  * Generated class for the LocalityDetailPage page.
@@ -19,7 +19,7 @@ export class LocalityDetailPage {
   area_id;name;latitude;longitude;well_lit;transport;crowded;
   reviews:any;
   loading:Loading;
-  constructor(public modalCtrl: ModalController,public navCtrl: NavController, public navParams: NavParams,private alertCtrl:AlertController,
+  constructor(public modalCtrl: ModalController,public navCtrl: NavController, private iab: InAppBrowser,public navParams: NavParams,private alertCtrl:AlertController,
     private loadingCtrl:LoadingController,
     private shesafeBackend:ShesafeBackendProvider) {
   let area_id = navParams.get('id');
@@ -72,11 +72,7 @@ export class LocalityDetailPage {
     profileModal.present();
   }
   openMaps(){
-    this.navCtrl.push(MapsPage,{
-      'latitude':this.latitude,
-      'longitude':this.longitude,
-      'name':this.name
-    })
+    const browser = this.iab.create('https://www.google.com/maps/?q=' + this.latitude + ',' + this.longitude,'_blank',{location:'no'}); 
   }
 
   showLoading() {

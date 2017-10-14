@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ShesafeBackendProvider {
   private headers:Headers;
-  private baseUrl:String = "http://localhost:8000";
+  private baseUrl:String = "http://97a1e9ce.ngrok.io";
   private authToken:String;
 
   

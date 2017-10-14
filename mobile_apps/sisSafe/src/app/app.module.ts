@@ -24,7 +24,6 @@ import {NearestWhatPage} from '../pages/nearest-what/nearest-what';
 import {LocalityDetailPage} from '../pages/locality-detail/locality-detail';
 import { ConnectivityProvider } from '../providers/connectivity/connectivity';
 import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
-import {MapsLocalityPage} from '../pages/maps-locality/maps-locality';
 import { LocationPage } from '../pages/location/location';
 
 import { LocationsProvider } from '../providers/locations/locations';
@@ -36,7 +35,6 @@ import { Network } from '@ionic-native/network';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import { HttpModule } from '@angular/http';
-import {MapsPage} from '../pages/maps/maps';
 import { File } from '@ionic-native/file';
 import { Transfer } from '@ionic-native/transfer';
 import { FilePath } from '@ionic-native/file-path';
@@ -78,9 +76,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     ContactUsPage,
     ExpandableHeaderComponent,
     AddReviewPage,
-    MapsPage,
     TermsAndConditionsPage,
-    MapsLocalityPage
   ],
   imports: [
     BrowserModule,
@@ -116,9 +112,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     LocationPage,
     ContactUsPage,
     AddReviewPage,
-    MapsPage,
     TermsAndConditionsPage,
-    MapsLocalityPage
   ],
   providers: [
     StatusBar,

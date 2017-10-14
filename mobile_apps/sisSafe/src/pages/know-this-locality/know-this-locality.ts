@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
+import {  NavController, NavParams, LoadingController, AlertController, Loading} from 'ionic-angular';
 // import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 // import { Storage } from '@ionic/storage';
 import { LocationPage } from '../location/location';
 import { LocalityDetailPage } from '../locality-detail/locality-detail';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 /**
  * Generated class for the KnowThisLocalityPage page.
  *

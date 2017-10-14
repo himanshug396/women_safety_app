@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, Loading, Platform, PopoverController} from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, Loading, Platform, PopoverController} from 'ionic-angular';
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { NearestWhatPage} from '../nearest-what/nearest-what';
 import {KnowThisLocalityPage} from '../know-this-locality/know-this-locality';

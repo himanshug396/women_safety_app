@@ -25,7 +25,7 @@ export class MyApp {
   loading_var:Boolean=false;
   
   constructor(
-    private alertCtrl: AlertController, private loadingCtrl: LoadingController,private toastCtrl: ToastController,
+    private alertCtrl: AlertController, private loadingCtrl: LoadingController,
     platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     private storage: Storage, private shesafeBackend: ShesafeBackendProvider) {
       this.showLoading();
