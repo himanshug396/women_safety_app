@@ -15,7 +15,8 @@
 
 <ion-content padding>
   <img [src]="captureDataUrl" *ngIf="captureDataUrl"/>
-  <button ion-button full *ngIf="downloadUrl.length != 0" (tap)='share()'>Send Picture to My Contacts</button>
-  
+  <br>
+  <button ion-button full *ngIf="downloadUrl.length != 0" (tap)='share()' class="onHOVER">Send Picture to My Contacts</button>
+  <br>
   Download URL : <a>{{downloadUrl}}</a>
 </ion-content>

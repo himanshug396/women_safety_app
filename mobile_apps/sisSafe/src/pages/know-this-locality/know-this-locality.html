@@ -7,14 +7,14 @@
 <ion-header>
   <ion-navbar hideBackButton>
     <ion-title>
-      <div id="navbar_location_title" (tap)="locationpage()">
+      <div id="navbar_location_title" (tap)="locationpage()" class="onHOVER">
         <div id="select_location_text">Select Location</div>
         <ion-icon name="pin"></ion-icon>
         <span id="location_text">{{location}}</span>
       </div>
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only style="padding:1em;padding-top:1.5em;" (tap)="backToHome()">BACK</button>
+      <button ion-button icon-only style="padding:1em;padding-top:1.5em;" (tap)="backToHome()" class="onHOVER">BACK</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

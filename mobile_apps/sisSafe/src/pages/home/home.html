@@ -1,7 +1,7 @@
 <ion-header id="homepageToolbars">
   <ion-navbar>
     <ion-title>
-      <div id="navbar_location_title" (tap)="getmyLocation()">
+      <div id="navbar_location_title" (tap)="getmyLocation()" class="onHOVER">
         <div id="select_location_text">Select Location</div>
         <ion-icon name="pin"></ion-icon>
         <span id="location_text">{{location}}</span>
@@ -16,12 +16,12 @@
 <ion-content padding id='ion-content-home'>
   <ion-grid class='homepage_grid'>
     <ion-row class='homepage_row' id="row1">
-      <ion-col (tap)="ClickUpload()" id='col1'> 
+      <ion-col (tap)="ClickUpload()" id='col1'class="onHOVER2"> 
         <img src="assets/icon/home/upload.png">
         <br>
         <p>Click & upload</p>
       </ion-col>
-      <ion-col (tap)="nearbyPlaces()" id='col2'>
+      <ion-col (tap)="nearbyPlaces()" id='col2' class="onHOVER2">
         <img src="assets/icon/home/search.png">
         <br>
         <p>Search Near Places</p>
@@ -32,13 +32,13 @@
       <ion-col id='col6'></ion-col>
     </ion-row>
     <ion-row class='homepage_row' id="row2">
-      <ion-col (tap)="knowthislocality()" id='col3'>
+      <ion-col (tap)="knowthislocality()" id='col3' class="onHOVER2">
         <img src="assets/icon/home/info.png">
         <br>
         <p>Get Information</p>
       </ion-col>
 
-      <ion-col (tap)="sendAlert()" id='col4'>
+      <ion-col (tap)="sendAlert()" id='col4' class="onHOVER2">
         <img src="assets/icon/home/sms.png">
         <br>
         <p>Send Alert</p>

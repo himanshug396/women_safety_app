@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>My Contacts</ion-title>
     <ion-buttons end>
-        <button ion-button (click)="skip()" color="primary">{{val}}</button>
+        <button ion-button (click)="skip()" color="primary" class="onHOVER">{{val}}</button>
       </ion-buttons>
   </ion-navbar>
 
@@ -18,14 +18,14 @@
 
 <ion-content style="background-color:white">
   <ion-fab bottom right style="bottom:2em;right:2em;" (click)="addcontact()">
-    <button ion-fab>
+    <button ion-fab class="onHOVER2">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
       
   <ion-list>
-    <ion-item-sliding style="border-bottom:0.5px solid #ddd" *ngFor="let contact of contacts">
-      <ion-item>
+    <ion-item-sliding style="border-bottom:0.5px solid #ddd" *ngFor="let contact of contacts" class="onHOVER">
+      <ion-item class="onHOVER">
         <h2>{{contact.phone}}</h2>
       </ion-item>
       <ion-item-options side="right">

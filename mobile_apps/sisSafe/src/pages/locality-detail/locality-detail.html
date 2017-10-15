@@ -15,12 +15,12 @@
    </div> -->
   <ion-grid style='color:white;font-weight:bold'>
     <ion-row>
-      <ion-col col-1 style='padding-top:4%;padding-left:1em;' (tap)='back()'>
+      <ion-col col-1 style='padding-top:4%;padding-left:1em;' (tap)='back()' class="onHOVER">
           <span class='arrow-back-locality'><ion-icon name="arrow-back"></ion-icon></span>
       </ion-col>
       <ion-col col-11 style='padding:1em;padding-left:1em;'>
           <span class='text_details'>{{name}}</span>
-          <button ion-fab class='mapbutton_locality' (tap)="openMaps()">
+          <button ion-fab class='mapbutton_locality' (tap)="openMaps()" class="onHOVER">
             <ion-icon name="pin" style='color:#fff'></ion-icon>
           </button>
   
@@ -32,7 +32,7 @@
 
 <ion-content fullscreen #mycontent>
 
-  <ion-fab bottom right style="bottom:2em;right:1em;" (tap)='addreview()'>
+  <ion-fab bottom right style="bottom:2em;right:1em;" (tap)='addreview()' class="onHOVER">
     <button ion-fab style="background-color:#f7a430">
       <ion-icon name="star"></ion-icon>
     </button>

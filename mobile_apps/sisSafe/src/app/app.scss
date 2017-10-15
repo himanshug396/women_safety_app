@@ -84,3 +84,32 @@ ion-navbar .button-inner{
 .fix_the_content .scroll-content{
     // position: fixed;
 }
+.onHOVER:hover{
+    
+    background-color:rgba(100,100,100,0.3);
+    color:white;
+}
+.onHOVER2:hover{
+    
+    background-color:rgba(100,100,100,0.1);
+    color:white;
+}
+.alert-md .alert-button :hover{
+    
+    background-color:#ee6990;
+    color:white;
+}
+.bar-button:hover{
+    border-radius:20px;
+    background-color:rgba(100,100,100,0.3);
+}
+.item-md:hover{
+    background-color:rgba(100,100,100,0.12);
+    
+
+}
+.card-background-page ion-card img:hover{
+
+     -webkit-filter: brightness(1); 
+     filter: brightness(1); 
+}

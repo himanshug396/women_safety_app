@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Add your Review</ion-title>
     <ion-buttons end>
-        <button ion-button (tap)="done()">{{button_val}}</button>
+        <button ion-button (tap)="done()" class="onHOVER">{{button_val}}</button>
     </ion-buttons>
     
   </ion-navbar>
@@ -22,11 +22,11 @@
   <h6 style="color:#414141;text-align:center;font-size:0.8em;">(Your review would help others to take appropriate decisions)</h6>
   
   <ion-grid>
-    <ion-row>
+    <ion-row class="onHOVER">
       <ion-col col-4>
           <p class='text_head'>Area Crowd</p>
       </ion-col>
-      <ion-col col-8>
+      <ion-col col-8 >
           <rating [(ngModel)]="crowded_val" 
           readOnly="false"
           max="5" 
@@ -37,7 +37,7 @@
           (ngModelChange)="crowded($event)"></rating>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="onHOVER">
         <ion-col col-4>
           <p class='text_head'>Lightened?</p>
         </ion-col>
@@ -52,7 +52,7 @@
           (ngModelChange)="well_lit($event)"></rating>
       </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="onHOVER">
         <ion-col col-4>
           <p class='text_head'>Public Transport</p>
         </ion-col>

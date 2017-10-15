@@ -89,6 +89,7 @@ import {TermsAndConditionsPageModule} from '../pages/terms-and-conditions/terms-
     LocationPageModule,
     ContactUsPageModule,
     AddReviewPageModule,
+    TermsAndConditionsPageModule
 
   ],
   bootstrap: [IonicApp],
