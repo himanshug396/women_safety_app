@@ -1,4 +1,4 @@
-# SheSafe v1 #
+# SheSafe #
 
 1. Run "git clone https://github.com/himanshug396/women_safety_app.git", 
 2. For Backend Setup, follow README.md inside backend/
