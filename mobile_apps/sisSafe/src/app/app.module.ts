@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
+
 import { HomePage } from '../pages/home/home';
 import { MapsNearbyPage } from '../pages/maps-nearby/maps-nearby';
 import { MapsNearbyBankPage } from '../pages/maps-nearby-bank/maps-nearby-bank';
@@ -58,25 +59,7 @@ import { Ionic2RatingModule } from 'ionic2-rating';
     KnowThisLocalityPage,
     NearestWhatPage,
     LocalityDetailPage,
-    LoginPage,
-    VerifyOtpPage,
-    AddContactsPage,
-    HomeNearbyBankPage,
-    HomeNearbyMedicalPage,
-    HomeNearbyStationPage,
-    HomeNearbyTaxiPage,
-    MapsNearbyBankPage,
-    MapsNearbyMedicalPage,
-    MapsNearbyStationPage,
-    MapsNearbyTaxiPage,
-    HomePopOverPage,
-    ClickUploadPage,
-    NetworkErrorPage,
-    LocationPage,
-    ContactUsPage,
-    ExpandableHeaderComponent,
-    AddReviewPage,
-    TermsAndConditionsPage,
+    ExpandableHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +116,6 @@ import { Ionic2RatingModule } from 'ionic2-rating';
   ],
   exports: [
     LocalityDetailPage,
-    ExpandableHeaderComponent
     ]
 })
 export class AppModule {}

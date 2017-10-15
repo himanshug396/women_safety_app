@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,Loading,LoadingController } from 'ionic-angular';
 import { ShesafeBackendProvider} from '../../providers/shesafe-backend/shesafe-backend';
 
+
 /**
  * Generated class for the AddReviewPage page.
  *

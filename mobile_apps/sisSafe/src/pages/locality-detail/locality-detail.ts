@@ -3,6 +3,7 @@ import { NavController, NavParams,AlertController ,ModalController,Loading,Loadi
 import { ShesafeBackendProvider } from '../../providers/shesafe-backend/shesafe-backend';
 import { AddReviewPage} from '../add-review/add-review';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 // import { ExpandableHeaderComponent } from '../../components/expandable-header/expandable-header';
 /**
  * Generated class for the LocalityDetailPage page.
