@@ -1,19 +1,14 @@
 # SheSafe v1 #
 
-1. If you are a collaborator, 
-     Run "git clone https://github.com/himanshug396/women_safety_app.git", 
-   Else,
-     Fork the repo and then run "git clone https://github.com/<YOUR_USERNAME>/women_safety_app.git"
-1.1 Create your branch, e.g. git checkout -b rastogi
-1.2 To confirm run 'git status' and it would show 'On branch rastogi'
+1. Run "git clone https://github.com/himanshug396/women_safety_app.git", 
 2. For Backend Setup, follow README.md inside backend/
 3. For App setup, follow README.md inside mobile_apps/
 
-#Women safety Application :#
+## Women safety Application
 SheSafe has been developed considering the increasing cases of crime against women. We have created a simple Hybrid Application to help women in need.
 The application SheSafe is successfully built by our team members. 
 The theme WOMEN SAFETY is chosen and the project  SheSafe was thought to be started with some major and some minor features.
-Features that had to be implemented : 
+## Features that had to be implemented :-
 
 ## Click & Upload
 A feature that would help women click the photographs she wanted to share with someone. This feature includes the camera access and FIREBASE cloud storage provided by Google, a send button to share the picture with her contacts via social media or sms ( integrated in the backend).
