@@ -1,3 +1,9 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+Steps to start application
 
-Add https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en to chrome to run this app locally.
+1. cd sisSafe
+2. Start using 'ionic serve' and install all the dependencies 'Y'
+ 
+If you get and error using ionic serve, make sure you have 'npm' and 'node' installed in your machine. 
+Install npm and node and then cd in the project directory.
+Now in sissafe, run 'npm install'
+and after the installation is complete, run 'ionic serve'
