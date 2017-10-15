@@ -8,7 +8,7 @@
 SheSafe has been developed considering the increasing cases of crime against women. We have created a simple Hybrid Application to help women in need.
 The application SheSafe is successfully built by our team members. 
 The theme WOMEN SAFETY is chosen and the project  SheSafe was thought to be started with some major and some minor features.
-## Features that had to be implemented :-
+## Features :-
 
 ## Click & Upload
 A feature that would help women click the photographs she wanted to share with someone. This feature includes the camera access and FIREBASE cloud storage provided by Google, a send button to share the picture with her contacts via social media or sms ( integrated in the backend).
