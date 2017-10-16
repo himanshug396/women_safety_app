@@ -2,7 +2,7 @@
 
 1. Run "git clone https://github.com/himanshug396/women_safety_app.git", 
 2. For Backend Setup, follow README.md inside backend/
-3. For App setup, follow README.md inside mobile_apps/
+3. For App setup, follow README.md inside mobile_apps/sisSafe/
 
 ## Women safety Application
 SheSafe has been developed considering the increasing cases of crime against women. We have created a simple Hybrid Application to help women in need.
