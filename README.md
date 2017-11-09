@@ -8,7 +8,6 @@
 
 ## Women safety Application
 SheSafe has been developed considering the increasing cases of crime against women. We have created a simple Hybrid Application to help women in need.
-The application SheSafe is successfully built by our team members. 
 The theme WOMEN SAFETY is chosen and the project  SheSafe was thought to be started with some major and some minor features.
 
 ## Features :-
