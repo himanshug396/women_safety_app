@@ -38,10 +38,8 @@ A form (email,sub,message) for taking feedback of the users in the application.
 
 
 ## DEMO VIDEO Link ##
-https://drive.google.com/open?id=0B8m7o0HsKOYeUzBEV0lOSmRhTU0
-
+https://goo.gl/dXqVmH 
 
 ## Application Screenshots ##
-https://drive.google.com/open?id=0B8m7o0HsKOYeM0FEeVQ4WEUzWlk
-
+https://goo.gl/oZHiEr
 
